@@ -295,7 +295,7 @@ class MultiHeadedAttention(nn.Module):
         # and nn.Dropout
         self.attention_heads = nn.ModuleList([
             AttentionHead(n_units, self.d_k, dropout)
-            for _ in range(n_units)
+            for _ in range(n_heads)
         ])
         self.output_layer = nn.Linear(self.n_units, self.n_units)
 
