@@ -269,7 +269,22 @@ class MultiHeadedAttention(nn.Module):
         # TODO: create/initialize any necessary parameters or layers
         # Note: the only Pytorch modules you are allowed to use are nn.Linear
         # and nn.Dropout
-        self.dropout = nn.Dropout(dropout)
+        self.linear_layers = [
+            {
+                'q': nn.Linear(self.n_units, self.d_k),
+                'k': nn.Linear(self.n_units, self.d_k),
+                'v': nn.Linear(self.n_units, self.d_k),
+                'dropout': nn.Dropout(dropout)
+            }
+            for _ in range(n_units)]
+        self.output_layer = nn.Linear(self.n_units, self.n_units)
+
+    @classmethod
+    def __mask_softmax(cls, x, s=None):
+        x_tilde = x
+        if s is not None:
+            x_tilde = x * s - 1e9*(1-s)
+        return nn.functional.softmax(x_tilde, dim=1)
 
     def forward(self, query, key, value, mask=None):
         # TODO: implement the masked multi-head attention.
@@ -278,8 +293,25 @@ class MultiHeadedAttention(nn.Module):
         # As described in the .tex, apply input masking to the softmax
         # generating the "attention values" (i.e. A_i in the .tex)
         # Also apply dropout to the attention values.
-
-        return  # size: (batch_size, seq_len, self.n_units)
+        def _per_batch(query, key, value, mask):
+            attention = []
+            if mask is not None:
+                mask = mask.float()
+            scale_factor = np.sqrt(self.d_k)
+            for head in self.linear_layers:
+                matrix_product = (head['q'](query) @ head['k']
+                                  (key).t())/scale_factor
+                a_i = MultiHeadedAttention.__mask_softmax(matrix_product, mask)
+                a_i = head['dropout'](a_i)
+                h_i = torch.mm(a_i, head['v'](value))
+                attention.append(h_i)
+            attention = torch.cat(attention, dim=1)
+            output = self.output_layer(attention)
+            return output
+        output = [
+            _per_batch(query[i], key[i], value[i], mask[i]) for i in range(query.shape[0])
+        ]
+        return torch.stack(output)  # size: (batch_size, seq_len, self.n_units)
 
 
 # ----------------------------------------------------------------------------------
