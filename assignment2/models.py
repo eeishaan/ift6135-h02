@@ -252,6 +252,7 @@ and a linear layer followed by a softmax.
 
 class AttentionHead(nn.Module):
     def __init__(self, n_units, d_k, dropout):
+        super(AttentionHead, self).__init__()
         self.q = nn.Linear(n_units, d_k)
         self.k = nn.Linear(n_units, d_k)
         self.v = nn.Linear(n_units, d_k)
