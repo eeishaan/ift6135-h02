@@ -263,13 +263,14 @@ class AttentionHead(nn.Module):
         x_tilde = x
         if s is not None:
             x_tilde = x * s - 1e9*(1-s)
-        return nn.functional.softmax(x_tilde, dim=1)
+        return nn.functional.softmax(x_tilde, dim=2)
 
     def forward(self, query, key, value, mask, scale_factor):
-        matrix_product = (self.q(query) @ self.k(key).t())/scale_factor
+        matrix_product = (self.q(query) @ self.k(
+            key).transpose(1, 2))/scale_factor
         a_i = AttentionHead.__mask_softmax(matrix_product, mask)
         a_i = self.dropout(a_i)
-        h_i = torch.mm(a_i, self.v(value))
+        h_i = a_i @ self.v(value)
         return h_i
 
 # TODO: implement this class
@@ -306,22 +307,17 @@ class MultiHeadedAttention(nn.Module):
         # As described in the .tex, apply input masking to the softmax
         # generating the "attention values" (i.e. A_i in the .tex)
         # Also apply dropout to the attention values.
-        scale_factor = np.sqrt(self.d_k)
+        scale_factor = math.sqrt(self.d_k)
 
-        def _per_batch(query, key, value, mask):
-            if mask is not None:
-                mask = mask.float()
-            attention = [
-                head(query, key, value, mask, scale_factor)
-                for head in self.attention_heads
-            ]
-            attention = torch.cat(attention, dim=1)
-            output = self.output_layer(attention)
-            return output
-        output = [
-            _per_batch(query[i], key[i], value[i], mask[i]) for i in range(query.shape[0])
+        if mask is not None:
+            mask = mask.float()
+        attention = [
+            head(query, key, value, mask, scale_factor)
+            for head in self.attention_heads
         ]
-        return torch.stack(output)  # size: (batch_size, seq_len, self.n_units)
+        attention = torch.cat(attention, dim=2)
+        output = self.output_layer(attention)
+        return output
 
 
 # ----------------------------------------------------------------------------------
