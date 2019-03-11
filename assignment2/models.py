@@ -267,7 +267,7 @@ class AttentionHead(nn.Module):
 
     def forward(self, query, key, value, mask, scale_factor):
         matrix_product = (self.q(query) @ self.k(
-            key).transpose(1, 2))/scale_factor
+            key).transpose_(1, 2))/scale_factor
         a_i = AttentionHead.__mask_softmax(matrix_product, mask)
         a_i = self.dropout(a_i)
         h_i = a_i @ self.v(value)
