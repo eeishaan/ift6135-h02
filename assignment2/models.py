@@ -98,7 +98,7 @@ class RNN(nn.Module): # Implement a stacked vanilla RNN with Tanh nonlinearities
 
         torch.nn.init.uniform_(self.embed_layer.weight, -0.1, 0.1)
         torch.nn.init.uniform_(self.output_layer.weight, -0.1, 0.1)
-        torch.nn.init.uniform_(self.output_layer.bias, 0.0)
+        torch.nn.init.constant_(self.output_layer.bias, 0.0)
 
         for layer in self.forward_layers:
             torch.nn.init.uniform_(layer.weight, -k, k)
