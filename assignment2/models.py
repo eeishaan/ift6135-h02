@@ -155,14 +155,16 @@ class RNN(nn.Module): # Implement a stacked vanilla RNN with Tanh nonlinearities
     output = []
     for timestep in range(self.seq_len):
         x = inputs[timestep]
+        new_hidden_layer = []
         for layer in range(self.num_layers):
             x_dropout = self.dropout_layers[layer](x)
             forward_out = self.forward_layers[layer](x_dropout)
             hidden_out = self.hidden_layers[layer](last_hidden[layer])
             node_out = nn.functional.tanh(forward_out + hidden_out)
             x = node_out
-            last_hidden[layer] = node_out
-            output.append(node_out)
+            new_hidden_layer.append(node_out)
+        last_hidden = torch.stack(new_hidden_layer)
+        output.append(x)
     output = torch.stack(output)
     output = self.dropout_layers[-1](output)
     logits = self.output_layer(output)
