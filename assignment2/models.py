@@ -150,7 +150,7 @@ class RNN(nn.Module): # Implement a stacked vanilla RNN with Tanh nonlinearities
               if you are curious.
                     shape: (num_layers, batch_size, hidden_size)
     """
-    last_hidden = copy.deepcopy(hidden)
+    last_hidden = hidden
     inputs = self.embed_layer(inputs)
     output = []
     for timestep in range(self.seq_len):
@@ -163,7 +163,7 @@ class RNN(nn.Module): # Implement a stacked vanilla RNN with Tanh nonlinearities
             node_out = nn.functional.tanh(forward_out + hidden_out)
             x = node_out
             new_hidden_layer.append(node_out)
-        last_hidden = torch.stack(new_hidden_layer)
+        last_hidden = new_hidden_layer
         output.append(x)
     output = torch.stack(output)
     output = self.dropout_layers[-1](output)
