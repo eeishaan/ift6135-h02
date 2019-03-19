@@ -71,10 +71,13 @@ class RNN(nn.Module): # Implement a stacked vanilla RNN with Tanh nonlinearities
     # for Pytorch to recognize these parameters as belonging to this nn.Module 
     # and compute their gradients automatically. You're not obligated to use the
     # provided clones function.
-    self.num_layers = num_layers
-    self.batch_size = batch_size
+    self.emb_size = emb_size
     self.hidden_size = hidden_size
     self.seq_len = seq_len
+    self.batch_size = batch_size
+    self.vocab_size = vocab_size
+    self.num_layers = num_layers
+    self.dp_keep_prob = dp_keep_prob
 
     self.embed_layer = nn.Embedding(vocab_size, emb_size)
     self.output_layer = nn.Linear(hidden_size, vocab_size)
@@ -95,7 +98,7 @@ class RNN(nn.Module): # Implement a stacked vanilla RNN with Tanh nonlinearities
 
         torch.nn.init.uniform_(self.embed_layer.weight, -0.1, 0.1)
         torch.nn.init.uniform_(self.output_layer.weight, -0.1, 0.1)
-        torch.nn.init.uniform_(self.embed_layer.bias, 0.0)
+        torch.nn.init.uniform_(self.output_layer.bias, 0.0)
 
         for layer in self.forward_layers:
             torch.nn.init.uniform_(layer.weight, -k, k)
