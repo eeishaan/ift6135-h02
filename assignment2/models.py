@@ -174,6 +174,9 @@ class GRU(nn.Module): # Implement a stacked GRU RNN
         self.pb = 1-dp_keep_prob
 
         self.encoder = nn.Embedding(vocab_size, emb_size)
+        self.decode = nn.Linear(hidden_size, vocab_size)
+
+        self.sigmoid = nn.Sigmoid()
         self.dropout = nn.Dropout(self.pb)
         self.linear = nn.Linear(hidden_size, hidden_size)
 
@@ -183,16 +186,16 @@ class GRU(nn.Module): # Implement a stacked GRU RNN
             w_r = Parameter(torch.Tensor(hidden_size, layer_input_size))
             w_z = Parameter(torch.Tensor(hidden_size, layer_input_size))
             w_h = Parameter(torch.Tensor(hidden_size, layer_input_size))
-            w_y = Parameter(torch.Tensor(hidden_size, layer_input_size))
+            w_y = Parameter(torch.Tensor(hidden_size, hidden_size))
 
-            b_r = Parameter(torch.Tensor(hidden_size))
-            b_z = Parameter(torch.Tensor(hidden_size))
-            b_h = Parameter(torch.Tensor(hidden_size))
-            b_y = Parameter(torch.Tensor(hidden_size))
+            b_r = Parameter(torch.Tensor(hidden_size, 1))
+            b_z = Parameter(torch.Tensor(hidden_size, 1))
+            b_h = Parameter(torch.Tensor(hidden_size, 1))
+            b_y = Parameter(torch.Tensor(hidden_size, 1))
 
-            u_r = Parameter(torch.Tensor(hidden_size, layer_input_size))
-            u_z = Parameter(torch.Tensor(hidden_size, layer_input_size))
-            u_h = Parameter(torch.Tensor(hidden_size, layer_input_size))
+            u_r = Parameter(torch.Tensor(hidden_size, hidden_size))
+            u_z = Parameter(torch.Tensor(hidden_size, hidden_size))
+            u_h = Parameter(torch.Tensor(hidden_size, hidden_size))
 
             layer_params = (w_r, w_z, w_h, w_y, b_r, b_z, b_h, b_y, u_r, u_z, u_h)
             param_names = ["w_r{}", "w_z{}", "w_h{}", "w_y{}", "b_r{}", "b_z{}",
@@ -203,6 +206,8 @@ class GRU(nn.Module): # Implement a stacked GRU RNN
             for name, param in zip(param_names, layer_params):
                 setattr(self, name, param)
             self._weights.append(param_names)
+
+        self.init_weights_uniform()
 
     def init_weights_uniform(self):
         for layer in self._weights:
@@ -216,7 +221,37 @@ class GRU(nn.Module): # Implement a stacked GRU RNN
         return torch.zeros(self.num_layers, self.batch_size, self.hidden_size)
 
     def forward(self, inputs, hidden):
-        # TODO ========================
+        hidden = hidden.view(self.num_layers, self.hidden_size, self.batch_size)
+        logits = torch.zeros(self.seq_len, self.batch_size, self.vocab_size)
+        for s in range(self.seq_len):
+            output = self.encoder(inputs[:, s])
+            output = output.view(self.emb_size, self.batch_size)
+            for layer in range(self.num_layers):
+                reset_g = self.sigmoid(torch.matmul(getattr(self, "w_r" + str(layer)), output) 
+                    + torch.matmul(getattr(self, "u_r" + str(layer)), hidden[layer]) 
+                    + getattr(self, "b_r" + str(layer)))
+
+                forget_g = self.sigmoid(torch.matmul(getattr(self, "w_z" + str(layer)), output)
+                    + torch.matmul(getattr(self, "u_z" + str(layer)), hidden[layer]) 
+                    + getattr(self, "b_z" + str(layer)))
+
+                h_tilde = self.sigmoid(torch.matmul(getattr(self, "w_h" + str(layer)), output)
+                    + torch.matmul(getattr(self, "u_h" + str(layer)), torch.mul(reset_g, hidden[layer]))
+                    + getattr(self, "b_h" + str(layer)))
+
+                hidden[layer] = torch.mul(1-forget_g, hidden[layer]) + torch.mul(forget_g, h_tilde)
+
+                output = self.sigmoid(torch.matmul(getattr(self, "w_y" + str(layer)), hidden[layer]) 
+                        + getattr(self, "b_y" + str(layer)))
+
+                if layer < self.num_layers - 1:
+                    output = self.linear(output.view(self.batch_size, self.hidden_size))
+                    output = self.dropout(output)
+
+                output = output.view(hidden[layer].shape)
+            output = self.decode(output.view(self.batch_size, self.hidden_size))
+            logits[s] = output
+        hidden = hidden.view(self.num_layers, self.batch_size, self.hidden_size)                     
         return logits.view(self.seq_len, self.batch_size, self.vocab_size), hidden
 
     def generate(self, input, hidden, generated_seq_len):

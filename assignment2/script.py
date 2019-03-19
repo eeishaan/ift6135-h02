@@ -1,18 +1,12 @@
 from models import GRU
+import torch
 
 def main():
-    gru = GRU(5, 50, 50, 1, 26, 2, 0.2)
-    print(gru.parameters())
-    print(gru._weights)
-    for layer in gru._weights:
-        print(layer)
-        for name in layer:
-            print(name[0]=="b")
-            if name[0] == "w" or "u":
-                getattr(gru, name).data.uniform_(-1, 1)
-            if name[0] == "b":
-                getattr(gru, name).data.zero_()
-                print(getattr(gru, name))
-
+    gru = GRU(16, 8, 4, 2, 26, 6, 0.2)
+    allo = torch.tensor([[0, 11, 10, 11],[0, 10, 8, 6]])
+    print(allo.shape)
+    hidden = gru.init_hidden()
+    output = gru(allo, hidden)
+    print(output)
 if __name__ == "__main__":
     main()
