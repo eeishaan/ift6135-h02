@@ -188,7 +188,21 @@ class RNN(nn.Module):
         # Unlike for self.forward, you WILL need to apply the softmax activation
         # function here in order to compute the parameters of the categorical
         # distributions to be sampled from at each time-step.
-        pass
+        """
+        Arguments:
+            - input: A mini-batch of input tokens (NOT sequences!)
+                            shape: (batch_size)
+            - hidden: The initial hidden states for every layer of the stacked RNN.
+                            shape: (num_layers, batch_size, hidden_size)
+            - generated_seq_len: The length of the sequence to generate.
+                        Note that this can be different than the length used 
+                        for training (self.seq_len)
+        Returns:
+            - Sampled sequences of tokens
+                        shape: (generated_seq_len, batch_size)
+        """
+
+        return samples
 
 
 # Problem 2
