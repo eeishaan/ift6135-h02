@@ -92,7 +92,7 @@ class RNN(nn.Module):
             nn.Linear(hidden_size, hidden_size, bias=False), num_layers-1)
         self.forward_layers.insert(0, nn.Linear(
             emb_size, hidden_size, bias=False))
-        self.dropout = nn.Dropout(dp_keep_prob)
+        self.dropout = nn.Dropout(1 - dp_keep_prob)
         self.init_weights()
 
     def init_weights(self):
