@@ -224,7 +224,7 @@ class GRU(nn.Module): # Implement a stacked GRU RNN
         hidden = hidden.view(self.num_layers, self.hidden_size, self.batch_size)
         logits = torch.zeros(self.seq_len, self.batch_size, self.vocab_size)
         for s in range(self.seq_len):
-            output = self.encoder(inputs[:, s])
+            output = self.encoder(inputs[s, :])
             output = output.view(self.emb_size, self.batch_size)
             for layer in range(self.num_layers):
                 reset_g = self.sigmoid(torch.matmul(getattr(self, "w_r" + str(layer)), output) 
