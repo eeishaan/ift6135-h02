@@ -84,7 +84,7 @@ class RNN(nn.Module): # Implement a stacked vanilla RNN with Tanh nonlinearities
     self.hidden_layers = clones(nn.Linear(hidden_size, hidden_size), num_layers)
     self.forward_layers = clones(nn.Linear(hidden_size, hidden_size, bias=False), num_layers-1)
     self.forward_layers.insert(0, nn.Linear(emb_size, hidden_size, bias=False))
-    self.dropout_layers = clones(nn.Dropout(dp_keep_prob), num_layers)
+    self.dropout = nn.Dropout(dp_keep_prob)
     self.init_weights()
 
   def init_weights(self):
@@ -157,7 +157,7 @@ class RNN(nn.Module): # Implement a stacked vanilla RNN with Tanh nonlinearities
         x = inputs[timestep]
         new_hidden_layer = []
         for layer in range(self.num_layers):
-            x_dropout = self.dropout_layers[layer](x)
+            x_dropout = self.dropout(x)
             forward_out = self.forward_layers[layer](x_dropout)
             hidden_out = self.hidden_layers[layer](last_hidden[layer])
             node_out = nn.functional.tanh(forward_out + hidden_out)
@@ -166,7 +166,7 @@ class RNN(nn.Module): # Implement a stacked vanilla RNN with Tanh nonlinearities
         last_hidden = new_hidden_layer
         output.append(x)
     output = torch.stack(output)
-    output = self.dropout_layers[-1](output)
+    output = self.dropout(output)
     logits = self.output_layer(output)
     return logits.view(self.seq_len, self.batch_size, self.vocab_size), last_hidden
 
