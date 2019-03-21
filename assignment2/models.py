@@ -251,7 +251,9 @@ class GRU(nn.Module):  # Implement a stacked GRU RNN
             emb_size, hidden_size, hidden_size))
 
         self.hidden_dash_layers = clones(GenericGate(
-            hidden_size, hidden_size, hidden_size), num_layers)
+            hidden_size, hidden_size, hidden_size), num_layers-1)
+        self.hidden_dash_layers.insert(0, GenericGate(
+            emb_size, hidden_size, hidden_size))
 
         self.output_layer = nn.Linear(hidden_size, emb_size)
         self.dropout = nn.Dropout(1 - dp_keep_prob)
