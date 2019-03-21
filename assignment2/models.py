@@ -288,7 +288,7 @@ class GRU(nn.Module):  # Implement a stacked GRU RNN
                 r_t = self.reset_layers[layer](x_dropout, h_t_1)
                 z_t = self.forget_layers[layer](x_dropout, h_t_1)
                 forget_hidden = r_t * h_t_1
-                h_tilde = self.forget_layers[layer](
+                h_tilde = self.hidden_dash_layers[layer](
                     x_dropout, forget_hidden, nn.Tanh())
                 h_t = (1-z_t) * h_t_1 + z_t * h_tilde
                 x = h_t
