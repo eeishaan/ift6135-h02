@@ -255,7 +255,7 @@ class GRU(nn.Module):  # Implement a stacked GRU RNN
         self.hidden_dash_layers.insert(0, GenericGate(
             emb_size, hidden_size, hidden_size))
 
-        self.output_layer = nn.Linear(hidden_size, emb_size)
+        self.output_layer = nn.Linear(hidden_size, vocab_size)
         self.dropout = nn.Dropout(1 - dp_keep_prob)
 
     def init_weights_uniform(self):
