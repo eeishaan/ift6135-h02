@@ -206,6 +206,22 @@ class RNN(nn.Module):
 
 
 # Problem 2
+
+class GenericGate(nn.Module):
+    def __init__(self, input_size, hidden_size, output_size):
+        super(GenericGate, self).__init__()
+        self.forward_layer = nn.Linear(input_size, output_size, bias=False)
+        self.hidden_layer = nn.Linear(hidden_size, output_size)
+
+    def init_weights_uniform(self, k):
+        torch.nn.init.uniform_(self.forward_layer.weight, -k, k)
+        torch.nn.init.uniform_(self.hidden_layer.weight, -k, k)
+        torch.nn.init.uniform_(self.hidden_layer.bias, -k, k)
+
+    def forward(self, inputs, hidden, non_linearity=nn.Sigmoid()):
+        return non_linearity(self.forward_layer(inputs) + self.hidden_layer(hidden))
+
+
 class GRU(nn.Module):  # Implement a stacked GRU RNN
     """
     Follow the same instructions as for RNN (above), but use the equations for 
@@ -214,20 +230,76 @@ class GRU(nn.Module):  # Implement a stacked GRU RNN
 
     def __init__(self, emb_size, hidden_size, seq_len, batch_size, vocab_size, num_layers, dp_keep_prob):
         super(GRU, self).__init__()
+        self.emb_size = emb_size
+        self.hidden_size = hidden_size
+        self.seq_len = seq_len
+        self.batch_size = batch_size
+        self.vocab_size = vocab_size
+        self.num_layers = num_layers
+        self.dp_keep_prob = dp_keep_prob
+
+        self.embed_layer = nn.Embedding(vocab_size, emb_size)
+
+        self.reset_layers = clones(GenericGate(
+            hidden_size, hidden_size, hidden_size), num_layers-1)
+        self.reset_layers.insert(0, GenericGate(
+            emb_size, hidden_size, hidden_size))
+
+        self.forget_layers = clones(GenericGate(
+            hidden_size, hidden_size, hidden_size), num_layers-1)
+        self.forget_layers.insert(0, GenericGate(
+            emb_size, hidden_size, hidden_size))
+
+        self.hidden_dash_layers = clones(GenericGate(
+            hidden_size, hidden_size, hidden_size), num_layers)
+
+        self.output_layer = nn.Linear(hidden_size, emb_size)
+        self.dropout = nn.Dropout(1 - dp_keep_prob)
 
     def init_weights_uniform(self):
         # TODO ========================
-        pass
+        with torch.no_grad():
+            k = math.sqrt(1/self.hidden_size)
+
+            torch.nn.init.uniform_(self.embed_layer.weight, -0.1, 0.1)
+            torch.nn.init.uniform_(self.output_layer.weight, -0.1, 0.1)
+            torch.nn.init.constant_(self.output_layer.bias, 0.0)
+
+            for layer_type in [self.reset_layers, self.forget_layers, self.hidden_dash_layers]:
+                for layer in layer_type:
+                    layer.init_weights_uniform(k)
 
     def init_hidden(self):
         # TODO ========================
         # a parameter tensor of shape (self.num_layers, self.batch_size, self.hidden_size)
-        return
+        return torch.zeros(self.num_layers, self.batch_size, self.hidden_size)
 
     def forward(self, inputs, hidden):
         # TODO ========================
-        pass
-        # return logits.view(self.seq_len, self.batch_size, self.vocab_size), hidden
+        last_hidden = hidden
+        inputs = self.embed_layer(inputs)
+        output = []
+        for timestep in range(self.seq_len):
+            x = inputs[timestep]
+            new_hidden_layer = []
+            for layer in range(self.num_layers):
+                x_dropout = self.dropout(x)
+                h_t_1 = last_hidden[layer]
+                r_t = self.reset_layers[layer](x_dropout, h_t_1)
+                z_t = self.forget_layers[layer](x_dropout, h_t_1)
+                forget_hidden = r_t * h_t_1
+                h_tilde = self.forget_layers[layer](
+                    x_dropout, forget_hidden, nn.Tanh())
+                h_t = (1-z_t) * h_t_1 + z_t * h_tilde
+                x = h_t
+                new_hidden_layer.append(h_t)
+            last_hidden = new_hidden_layer
+            output.append(x)
+        output = torch.stack(output)
+        output = self.dropout(output)
+        logits = self.output_layer(output)
+
+        return logits.view(self.seq_len, self.batch_size, self.vocab_size), last_hidden
 
     def generate(self, input, hidden, generated_seq_len):
         # TODO ========================
