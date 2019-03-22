@@ -414,6 +414,9 @@ def run_epoch(model, data, is_train=False, lr=1.0):
                 print('step: '+ str(step) + '\t' \
                     + 'loss: '+ str(costs) + '\t' \
                     + 'speed (wps):' + str(iters * model.batch_size / (time.time() - start_time)))
+    
+    gen = model.generate(torch.tensor([3, 45, 76]), 0, 10)
+    print(gen)
     return np.exp(costs / iters), losses
 
 

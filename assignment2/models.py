@@ -201,7 +201,27 @@ class RNN(nn.Module):
             - Sampled sequences of tokens
                         shape: (generated_seq_len, batch_size)
         """
-
+        old_seq_len = self.seq_len
+        old_batch_size = self.batch_size
+        self.seq_len = 1
+        self.batch_size = input.shape[0]
+        samples = []
+        input = input.unsqueeze(0)
+        self.eval()
+        with torch.no_grad():
+            hidden = self.init_hidden()
+            out, hidden = self(input, hidden.cuda())
+            inp = out[-1].reshape(1).cuda()
+            for p in range(generated_seq_len):
+                output, hidden = self(input, hidden)
+                output_dist = output[0].data.view(-1).div(0.8).exp()
+                retained = torch.multinomial(output_dist, 1)
+                input = torch.t(retained)
+                samples.append(retained)
+        samples = torch.stack(samples, dim=1)
+        
+        self.seq_len = old_seq_len
+        self.batch_size = old_batch_size
         return samples
 
 
@@ -307,7 +327,6 @@ class GRU(nn.Module):  # Implement a stacked GRU RNN
 
     def generate(self, input, hidden, generated_seq_len):
         # TODO ========================
-        # return samples
         pass
 
 
