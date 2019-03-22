@@ -415,8 +415,13 @@ def run_epoch(model, data, is_train=False, lr=1.0):
                     + 'loss: '+ str(costs) + '\t' \
                     + 'speed (wps):' + str(iters * model.batch_size / (time.time() - start_time)))
     
-    gen = model.generate(torch.tensor([3, 45, 76]), 0, 10)
-    print(gen)
+    gen = model.generate(torch.tensor([3, 45, 76, 12, 67, 87]), 0, 20)
+    text = []
+    for i in range(3):
+        text.append([])
+        for j in range(10):
+            text[i].append(id_2_word[int(gen[i, j].cpu().numpy())])
+        print(text[i])
     return np.exp(costs / iters), losses
 
 
@@ -485,7 +490,14 @@ for epoch in range(num_epochs):
     print(log_str)
     with open (os.path.join(args.save_dir, 'log.txt'), 'a') as f_:
         f_.write(log_str+ '\n')
-
+    inp = [np.random.rand(0, vocab_size) 
+    gen = model.generate(torch.tensor([]), 0, 20)
+    text = []
+    for i in range(3):
+        text.append([])
+        for j in range(10):
+            text[i].append(id_2_word[int(gen[i, j].cpu().numpy())])
+        print(text[i])
 # SAVE LEARNING CURVES
 lc_path = os.path.join(args.save_dir, 'learning_curves.npy')
 print('\nDONE\n\nSaving learning curves to '+lc_path)

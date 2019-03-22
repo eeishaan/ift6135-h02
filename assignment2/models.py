@@ -167,7 +167,7 @@ class RNN(nn.Module):
                 x_dropout = self.dropout(x)
                 forward_out = self.forward_layers[layer](x_dropout)
                 hidden_out = self.hidden_layers[layer](last_hidden[layer])
-                node_out = nn.functional.tanh(forward_out + hidden_out)
+                node_out = nn.Tanh()(forward_out + hidden_out)
                 x = node_out
                 new_hidden_layer.append(node_out)
             last_hidden = new_hidden_layer
@@ -210,15 +210,17 @@ class RNN(nn.Module):
         self.eval()
         with torch.no_grad():
             hidden = self.init_hidden()
-            out, hidden = self(input, hidden.cuda())
-            inp = out[-1].reshape(1).cuda()
+            out, hidden = self(input.cuda(), hidden.cuda())
+            hidden = torch.stack(hidden)
+            # inp = out[-1].reshape(1).cuda()
             for p in range(generated_seq_len):
-                output, hidden = self(input, hidden)
-                output_dist = output[0].data.view(-1).div(0.8).exp()
+                output, hidden = self(input.cuda(), hidden.cuda())
+                hidden = torch.stack(hidden)
+                output_dist = output[0].div(0.8).exp()
                 retained = torch.multinomial(output_dist, 1)
                 input = torch.t(retained)
                 samples.append(retained)
-        samples = torch.stack(samples, dim=1)
+        samples = torch.stack(samples, dim=1).squeeze()
         
         self.seq_len = old_seq_len
         self.batch_size = old_batch_size
@@ -327,7 +329,7 @@ class GRU(nn.Module):  # Implement a stacked GRU RNN
 
     def generate(self, input, hidden, generated_seq_len):
         # TODO ========================
-        pass
+
 
 
 # Problem 3
