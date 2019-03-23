@@ -1,7 +1,7 @@
 import argparse
 import os
 import sys
-
+import collections
 import numpy
 import torch
 import torch.nn as nn
@@ -76,7 +76,8 @@ if __name__ == "__main__":
         model = GRU(**model_args)
     if model_type == "RNN":
         model = RNN(**model_args)
-    model.load_state_dict(torch.load(model_path + "best_params.pt"))
+
+    model.load_state_dict(torch.load(model_path + "best_params.pt", map_location="cpu"))
     _, id_to_word = build_vocab("./data/ptb.train.txt")
-    random_batch = np.random.rand(0, len(id_to_word))
+    random_batch = torch.tensor(np.random.rand(0, len(id_to_word)))
     sequences = model.generate(random_batch, 0, gen_length)
