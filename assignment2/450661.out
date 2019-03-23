@@ -1,8 +1,0 @@
-
-########## Setting Up Experiment ######################
-
-Putting log in GRU_SGD_LR_SCHEDULE_model=GRU_optimizer=SGD_LR_SCHEDULE_initial_lr=0.0001_batch_size=64_seq_len=35_hidden_size=1024_num_layers=2_dp_keep_prob=0.35_num_epochs=5_0
-Using the GPU
-Loading data from data
-Set compute mode to DEFAULT for GPU 00000000:83:00.0.
-All done.
