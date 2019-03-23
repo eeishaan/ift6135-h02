@@ -1,0 +1,47 @@
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) openmpi/2.1.1
+
+++ cd /rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/
+++ for lr in '"0.0001"' '"0.0002"' '"0.0003"'
+++ for batch_size in '"64"' '"128"'
+++ for num_layers in '"2"' '"3"' '"4"'
+++ for hidden_size in '"1024"' '"1500"'
+++ s_exec python -m assignment2.ptb-lm --model=GRU --optimizer=SGD_LR_SCHEDULE --initial_lr=0.0001 --batch_size=64 --seq_len=35 --hidden_size=1024 --num_layers=2 --dp_keep_prob=0.35 --num_epochs=5
+++ EXEC_ARGS='python -m assignment2.ptb-lm --model=GRU --optimizer=SGD_LR_SCHEDULE --initial_lr=0.0001 --batch_size=64 --seq_len=35 --hidden_size=1024 --num_layers=2 --dp_keep_prob=0.35 --num_epochs=5'
+++ SINGULARITY_ARGS='--nv --bind ,/home/user36 /rap/jvb-000-aa/COURS2019/etudiants/ift6759.simg'
+++ bash -c 'module --force purge && singularity exec --nv --bind ,/home/user36 /rap/jvb-000-aa/COURS2019/etudiants/ift6759.simg python -m assignment2.ptb-lm --model=GRU --optimizer=SGD_LR_SCHEDULE --initial_lr=0.0001 --batch_size=64 --seq_len=35 --hidden_size=1024 --num_layers=2 --dp_keep_prob=0.35 --num_epochs=5'
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+Traceback (most recent call last):
+  File "/miniconda/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/miniconda/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/ptb-lm.py", line 279, in <module>
+    raw_data = ptb_raw_data(data_path=args.data)
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/ptb-lm.py", line 228, in ptb_raw_data
+    word_to_id, id_2_word = _build_vocab(train_path)
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/ptb-lm.py", line 207, in _build_vocab
+    data = _read_words(filename)
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/ptb-lm.py", line 203, in _read_words
+    with open(filename, "r") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'data/ptb.train.txt'
+
+==============NVSMI LOG==============
+
+Timestamp                           : Fri Mar 22 12:16:41 2019
+Driver Version                      : 410.73
+CUDA Version                        : 10.0
+
+Attached GPUs                       : 8
+GPU 00000000:83:00.0
+    Accounting Mode                 : Enabled
+    Accounting Mode Buffer Size     : 4000
+    Accounted Processes
+        Process ID                  : 6619
+            GPU Utilization         : 0 %
+            Memory Utilization      : 0 %
+            Max memory usage        : 0 MiB
+            Time                    : 300 ms
+            Is Running              : 0
+

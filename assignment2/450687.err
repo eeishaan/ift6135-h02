@@ -1,0 +1,245 @@
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) openmpi/2.1.1
+
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650166.gpu-srv1.helios.SC: line 1:  3963 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+/miniconda/lib/python3.6/site-packages/torch/nn/functional.py:1320: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+/miniconda/lib/python3.6/site-packages/torch/nn/functional.py:1320: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+/miniconda/lib/python3.6/site-packages/torch/nn/functional.py:1320: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650166.gpu-srv1.helios.SC: line 1:  4496 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650166.gpu-srv1.helios.SC: line 1:  4541 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+/miniconda/lib/python3.6/site-packages/torch/nn/functional.py:1320: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650166.gpu-srv1.helios.SC: line 1:  4680 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650166.gpu-srv1.helios.SC: line 1:  4727 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650166.gpu-srv1.helios.SC: line 1:  4774 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650166.gpu-srv1.helios.SC: line 1:  4821 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650166.gpu-srv1.helios.SC: line 1:  4866 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+/miniconda/lib/python3.6/site-packages/torch/nn/functional.py:1320: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650166.gpu-srv1.helios.SC: line 1:  4985 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650166.gpu-srv1.helios.SC: line 1:  5030 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+/miniconda/lib/python3.6/site-packages/torch/nn/functional.py:1320: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+/miniconda/lib/python3.6/site-packages/torch/nn/functional.py:1320: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+/miniconda/lib/python3.6/site-packages/torch/nn/functional.py:1320: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+/miniconda/lib/python3.6/site-packages/torch/nn/functional.py:1320: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+/miniconda/lib/python3.6/site-packages/torch/nn/functional.py:1320: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650166.gpu-srv1.helios.SC: line 1:  7384 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650166.gpu-srv1.helios.SC: line 1:  7430 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+/miniconda/lib/python3.6/site-packages/torch/nn/functional.py:1320: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+/miniconda/lib/python3.6/site-packages/torch/nn/functional.py:1320: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+/miniconda/lib/python3.6/site-packages/torch/nn/functional.py:1320: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+/miniconda/lib/python3.6/site-packages/torch/nn/functional.py:1320: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650166.gpu-srv1.helios.SC: line 1:  7961 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+/miniconda/lib/python3.6/site-packages/torch/nn/functional.py:1320: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+/miniconda/lib/python3.6/site-packages/torch/nn/functional.py:1320: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+/miniconda/lib/python3.6/site-packages/torch/nn/functional.py:1320: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650166.gpu-srv1.helios.SC: line 1:  8449 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650166.gpu-srv1.helios.SC: line 1:  8494 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650166.gpu-srv1.helios.SC: line 1:  8541 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+/miniconda/lib/python3.6/site-packages/torch/nn/functional.py:1320: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+/miniconda/lib/python3.6/site-packages/torch/nn/functional.py:1320: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650166.gpu-srv1.helios.SC: line 1:  8826 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+
+==============NVSMI LOG==============
+
+Timestamp                           : Fri Mar 22 15:49:19 2019
+Driver Version                      : 410.73
+CUDA Version                        : 10.0
+
+Attached GPUs                       : 8
+GPU 00000000:83:00.0
+    Accounting Mode                 : Enabled
+    Accounting Mode Buffer Size     : 4000
+    Accounted Processes
+        Process ID                  : 4033
+            GPU Utilization         : 93 %
+            Memory Utilization      : 42 %
+            Max memory usage        : 1158 MiB
+            Time                    : 569499 ms
+            Is Running              : 0
+        Process ID                  : 4144
+            GPU Utilization         : 93 %
+            Memory Utilization      : 35 %
+            Max memory usage        : 1052 MiB
+            Time                    : 482308 ms
+            Is Running              : 0
+        Process ID                  : 4373
+            GPU Utilization         : 94 %
+            Memory Utilization      : 43 %
+            Max memory usage        : 1268 MiB
+            Time                    : 747142 ms
+            Is Running              : 0
+        Process ID                  : 4609
+            GPU Utilization         : 93 %
+            Memory Utilization      : 35 %
+            Max memory usage        : 1511 MiB
+            Time                    : 291357 ms
+            Is Running              : 0
+        Process ID                  : 4935
+            GPU Utilization         : 92 %
+            Memory Utilization      : 36 %
+            Max memory usage        : 1026 MiB
+            Time                    : 375957 ms
+            Is Running              : 0
+        Process ID                  : 5099
+            GPU Utilization         : 94 %
+            Memory Utilization      : 43 %
+            Max memory usage        : 1268 MiB
+            Time                    : 746595 ms
+            Is Running              : 0
+        Process ID                  : 5252
+            GPU Utilization         : 93 %
+            Memory Utilization      : 35 %
+            Max memory usage        : 1079 MiB
+            Time                    : 589988 ms
+            Is Running              : 0
+        Process ID                  : 5388
+            GPU Utilization         : 94 %
+            Memory Utilization      : 43 %
+            Max memory usage        : 1352 MiB
+            Time                    : 928542 ms
+            Is Running              : 0
+        Process ID                  : 5600
+            GPU Utilization         : 93 %
+            Memory Utilization      : 35 %
+            Max memory usage        : 1511 MiB
+            Time                    : 291705 ms
+            Is Running              : 0
+        Process ID                  : 7328
+            GPU Utilization         : 94 %
+            Memory Utilization      : 39 %
+            Max memory usage        : 1632 MiB
+            Time                    : 478210 ms
+            Is Running              : 0
+        Process ID                  : 7499
+            GPU Utilization         : 93 %
+            Memory Utilization      : 34 %
+            Max memory usage        : 1600 MiB
+            Time                    : 431875 ms
+            Is Running              : 0
+        Process ID                  : 7626
+            GPU Utilization         : 95 %
+            Memory Utilization      : 39 %
+            Max memory usage        : 1981 MiB
+            Time                    : 772687 ms
+            Is Running              : 0
+        Process ID                  : 7775
+            GPU Utilization         : 92 %
+            Memory Utilization      : 35 %
+            Max memory usage        : 1026 MiB
+            Time                    : 378911 ms
+            Is Running              : 0
+        Process ID                  : 7848
+            GPU Utilization         : 93 %
+            Memory Utilization      : 42 %
+            Max memory usage        : 1158 MiB
+            Time                    : 567607 ms
+            Is Running              : 0
+        Process ID                  : 8030
+            GPU Utilization         : 93 %
+            Memory Utilization      : 43 %
+            Max memory usage        : 1268 MiB
+            Time                    : 749186 ms
+            Is Running              : 0
+        Process ID                  : 8203
+            GPU Utilization         : 92 %
+            Memory Utilization      : 35 %
+            Max memory usage        : 1079 MiB
+            Time                    : 593089 ms
+            Is Running              : 0
+        Process ID                  : 8314
+            GPU Utilization         : 94 %
+            Memory Utilization      : 43 %
+            Max memory usage        : 1352 MiB
+            Time                    : 932225 ms
+            Is Running              : 0
+        Process ID                  : 8610
+            GPU Utilization         : 95 %
+            Memory Utilization      : 39 %
+            Max memory usage        : 1721 MiB
+            Time                    : 625904 ms
+            Is Running              : 0
+        Process ID                  : 8748
+            GPU Utilization         : 93 %
+            Memory Utilization      : 34 %
+            Max memory usage        : 1600 MiB
+            Time                    : 431853 ms
+            Is Running              : 0
+        Process ID                  : 6720
+            GPU Utilization         : 93 %
+            Memory Utilization      : 34 %
+            Max memory usage        : 0 MiB
+            Time                    : 432038 ms
+            Is Running              : 0
+

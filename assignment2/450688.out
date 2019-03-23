@@ -1,0 +1,440 @@
+
+########## Setting Up Experiment ######################
+
+Putting log in TRANSFORMER_ADAM_model=TRANSFORMER_optimizer=ADAM_initial_lr=0.0001_batch_size=64_seq_len=35_hidden_size=1024_num_layers=2_dp_keep_prob=0.35_num_epochs=5_0
+Using the GPU
+Loading data from data
+  vocabulary size: 10000
+
+########## Running Main Loop ##########################
+
+EPOCH 0 ------------------
+step: 10	loss: 3401.656527519226	speed (wps):4981.324335544429
+step: 51	loss: 13599.10704612732	speed (wps):5186.441273408425
+step: 92	loss: 23092.203710079193	speed (wps):5211.850481840215
+step: 133	loss: 32549.057655334473	speed (wps):5221.226569215008
+step: 174	loss: 41893.387479782104	speed (wps):5227.459328365208
+step: 215	loss: 51309.772725105286	speed (wps):5230.39686506302
+step: 256	loss: 60634.89279747009	speed (wps):5232.1947999278955
+step: 297	loss: 69882.13937520981	speed (wps):5233.595663858371
+step: 338	loss: 79043.29251050949	speed (wps):5234.621190090564
+step: 379	loss: 88143.01213026047	speed (wps):5235.506520695652
+epoch: 0	train ppl: 733.3767397430596	val ppl: 841.4685494040642	best val: 841.4685494040642	time (s) spent in epoch: 180.77160215377808
+
+EPOCH 1 ------------------
+step: 10	loss: 2421.3032484054565	speed (wps):5159.785260182906
+step: 51	loss: 11326.508686542511	speed (wps):5221.731829188786
+step: 92	loss: 20167.185661792755	speed (wps):5231.355987226727
+step: 133	loss: 28922.525370121002	speed (wps):5233.2681674522055
+step: 174	loss: 37513.93582582474	speed (wps):5234.528123431632
+step: 215	loss: 46210.971846580505	speed (wps):5236.23668163278
+step: 256	loss: 54861.67536497116	speed (wps):5237.262642802555
+step: 297	loss: 63443.32179546356	speed (wps):5237.892880892338
+step: 338	loss: 71958.67994308472	speed (wps):5238.316685010665
+step: 379	loss: 80478.72184276581	speed (wps):5238.614824680511
+epoch: 1	train ppl: 418.56832065085564	val ppl: 544.7371418377714	best val: 544.7371418377714	time (s) spent in epoch: 180.64016962051392
+
+EPOCH 2 ------------------
+step: 10	loss: 2288.8623666763306	speed (wps):5161.390669571694
+step: 51	loss: 10699.856793880463	speed (wps):5225.129229380905
+step: 92	loss: 19077.325704097748	speed (wps):5232.636145180932
+step: 133	loss: 27400.63803434372	speed (wps):5235.314881914809
+step: 174	loss: 35564.412717819214	speed (wps):5238.1335427931945
+step: 215	loss: 43856.13014936447	speed (wps):5239.576405059504
+step: 256	loss: 52140.85074186325	speed (wps):5241.8117058810585
+step: 297	loss: 60359.32914733887	speed (wps):5243.756613966994
+step: 338	loss: 68529.53263282776	speed (wps):5247.157308008644
+step: 379	loss: 76730.64311742783	speed (wps):5251.480757285083
+epoch: 2	train ppl: 317.54094161507936	val ppl: 426.9451077368214	best val: 426.9451077368214	time (s) spent in epoch: 180.09602665901184
+
+EPOCH 3 ------------------
+step: 10	loss: 2210.4441499710083	speed (wps):5200.013915322125
+step: 51	loss: 10327.094357013702	speed (wps):5269.540081712341
+step: 92	loss: 18423.154990673065	speed (wps):5277.183370157745
+step: 133	loss: 26473.004353046417	speed (wps):5280.071822535421
+step: 174	loss: 34361.53738975525	speed (wps):5281.996739752356
+step: 215	loss: 42390.6397485733	speed (wps):5282.420350362462
+step: 256	loss: 50426.39314413071	speed (wps):5283.320707456138
+step: 297	loss: 58405.37898540497	speed (wps):5283.864960473856
+step: 338	loss: 66342.1892786026	speed (wps):5284.463363289514
+step: 379	loss: 74322.11038827896	speed (wps):5284.829772073452
+epoch: 3	train ppl: 265.5103674444895	val ppl: 364.3523365285952	best val: 364.3523365285952	time (s) spent in epoch: 179.0730791091919
+
+EPOCH 4 ------------------
+step: 10	loss: 2152.613854408264	speed (wps):5207.076331226758
+step: 51	loss: 10051.628906726837	speed (wps):5272.709648670885
+step: 92	loss: 17940.190966129303	speed (wps):5278.910521856978
+step: 133	loss: 25789.52038526535	speed (wps):5282.426550410416
+step: 174	loss: 33481.20634317398	speed (wps):5283.883491918188
+step: 215	loss: 41309.406423568726	speed (wps):5285.366758341288
+step: 256	loss: 49163.149094581604	speed (wps):5286.176142970114
+step: 297	loss: 56958.16608905792	speed (wps):5286.74540618719
+step: 338	loss: 64711.54765129089	speed (wps):5287.156515415692
+step: 379	loss: 72520.01807451248	speed (wps):5287.48937130966
+epoch: 4	train ppl: 232.26549830393395	val ppl: 325.9089422539854	best val: 325.9089422539854	time (s) spent in epoch: 178.9918897151947
+
+DONE
+
+Saving learning curves to TRANSFORMER_ADAM_model=TRANSFORMER_optimizer=ADAM_initial_lr=0.0001_batch_size=64_seq_len=35_hidden_size=1024_num_layers=2_dp_keep_prob=0.35_num_epochs=5_0/learning_curves.npy
+
+########## Setting Up Experiment ######################
+
+Putting log in TRANSFORMER_ADAM_model=TRANSFORMER_optimizer=ADAM_initial_lr=0.0001_batch_size=64_seq_len=35_hidden_size=1500_num_layers=4_dp_keep_prob=0.35_num_epochs=5_0
+Using the GPU
+Loading data from data
+  vocabulary size: 10000
+
+########## Setting Up Experiment ######################
+
+Putting log in TRANSFORMER_ADAM_model=TRANSFORMER_optimizer=ADAM_initial_lr=0.0001_batch_size=128_seq_len=35_hidden_size=1024_num_layers=4_dp_keep_prob=0.35_num_epochs=5_0
+Using the GPU
+Loading data from data
+  vocabulary size: 10000
+
+########## Running Main Loop ##########################
+
+EPOCH 0 ------------------
+step: 10	loss: 3345.6469345092773	speed (wps):3403.522765993039
+step: 30	loss: 8390.09131193161	speed (wps):3436.676573493658
+step: 50	loss: 13024.380524158478	speed (wps):3443.2814793259117
+step: 70	loss: 17644.396963119507	speed (wps):3446.3962405270804
+step: 90	loss: 22265.63559293747	speed (wps):3448.259088576155
+step: 110	loss: 26877.394967079163	speed (wps):3449.341500618909
+step: 130	loss: 31479.792144298553	speed (wps):3450.468200584111
+step: 150	loss: 36065.52448749542	speed (wps):3451.459043621699
+step: 170	loss: 40624.62312698364	speed (wps):3452.6234895679436
+step: 190	loss: 45198.58615875244	speed (wps):3454.3740871868263
+
+########## Setting Up Experiment ######################
+
+Putting log in TRANSFORMER_ADAM_model=TRANSFORMER_optimizer=ADAM_initial_lr=0.0001_batch_size=128_seq_len=35_hidden_size=1500_num_layers=4_dp_keep_prob=0.35_num_epochs=5_0
+Using the GPU
+Loading data from data
+  vocabulary size: 10000
+
+########## Setting Up Experiment ######################
+
+Putting log in TRANSFORMER_ADAM_model=TRANSFORMER_optimizer=ADAM_initial_lr=0.0002_batch_size=64_seq_len=35_hidden_size=1500_num_layers=2_dp_keep_prob=0.35_num_epochs=5_0
+Using the GPU
+Loading data from data
+  vocabulary size: 10000
+
+########## Setting Up Experiment ######################
+
+Putting log in TRANSFORMER_ADAM_model=TRANSFORMER_optimizer=ADAM_initial_lr=0.0002_batch_size=64_seq_len=35_hidden_size=1500_num_layers=3_dp_keep_prob=0.35_num_epochs=5_0
+Using the GPU
+Loading data from data
+  vocabulary size: 10000
+
+########## Setting Up Experiment ######################
+
+Putting log in TRANSFORMER_ADAM_model=TRANSFORMER_optimizer=ADAM_initial_lr=0.0002_batch_size=64_seq_len=35_hidden_size=1024_num_layers=4_dp_keep_prob=0.35_num_epochs=5_0
+Using the GPU
+Loading data from data
+  vocabulary size: 10000
+
+########## Running Main Loop ##########################
+
+EPOCH 0 ------------------
+step: 10	loss: 3182.1861505508423	speed (wps):2861.730963206884
+step: 51	loss: 12783.82890701294	speed (wps):2945.1538389268107
+step: 92	loss: 22283.785107135773	speed (wps):2955.4296350524032
+step: 133	loss: 31730.70733308792	speed (wps):2959.6519570724113
+step: 174	loss: 40984.61117267609	speed (wps):2961.4891638952404
+step: 215	loss: 50265.65017938614	speed (wps):2962.6964031659277
+step: 256	loss: 59387.17255115509	speed (wps):2963.493254208232
+step: 297	loss: 68333.47038507462	speed (wps):2964.121217096704
+step: 338	loss: 77130.42895317078	speed (wps):2964.5720077157234
+step: 379	loss: 85849.93962049484	speed (wps):2964.8176763116553
+epoch: 0	train ppl: 612.5413125612694	val ppl: 485.4336522072041	best val: 485.4336522072041	time (s) spent in epoch: 318.97119426727295
+
+EPOCH 1 ------------------
+step: 10	loss: 2326.637146472931	speed (wps):2932.0932909740486
+step: 51	loss: 10848.53681564331	speed (wps):2958.3668886880605
+step: 92	loss: 19313.83959531784	speed (wps):2961.478088345855
+step: 133	loss: 27675.972006320953	speed (wps):2962.6803849921516
+step: 174	loss: 35856.95674657822	speed (wps):2963.349930653217
+step: 215	loss: 44144.795451164246	speed (wps):2963.7089993328673
+step: 256	loss: 52406.8664598465	speed (wps):2964.103377762373
+step: 297	loss: 60592.09904432297	speed (wps):2964.3453639160443
+step: 338	loss: 68713.2530426979	speed (wps):2964.6588020098793
+step: 379	loss: 76836.07588768005	speed (wps):2964.723329446142
+epoch: 1	train ppl: 318.3479421395381	val ppl: 325.65678274221193	best val: 325.65678274221193	time (s) spent in epoch: 318.8909661769867
+
+EPOCH 2 ------------------
+step: 10	loss: 2186.7265009880066	speed (wps):2934.1068808570794
+step: 51	loss: 10194.712188243866	speed (wps):2960.3746014565963
+step: 92	loss: 18172.54962205887	speed (wps):2967.9815919377074
+step: 133	loss: 26086.82955980301	speed (wps):2973.819646036927
+step: 174	loss: 33831.68138742447	speed (wps):2979.2347072024245
+step: 215	loss: 41704.386224746704	speed (wps):2982.447825523758
+step: 256	loss: 49581.141204833984	speed (wps):2984.9129882193965
+step: 297	loss: 57400.34892320633	speed (wps):2986.8121508886584
+step: 338	loss: 65170.563464164734	speed (wps):2988.122292240918
+step: 379	loss: 72976.86784982681	speed (wps):2989.125579321317
+epoch: 2	train ppl: 239.53392118537812	val ppl: 274.6010771461676	best val: 274.6010771461676	time (s) spent in epoch: 316.26437759399414
+
+EPOCH 3 ------------------
+step: 10	loss: 2108.6291694641113	speed (wps):2962.876409179352
+step: 51	loss: 9813.68679523468	speed (wps):2989.6771454241684
+step: 92	loss: 17504.148008823395	speed (wps):2993.496974711104
+step: 133	loss: 25143.76166343689	speed (wps):2994.8508708351137
+step: 174	loss: 32618.014941215515	speed (wps):2995.650717321813
+step: 215	loss: 40229.57042694092	speed (wps):2996.2537164027526
+step: 256	loss: 47870.613520145416	speed (wps):2996.757084318724
+step: 297	loss: 55452.27089166641	speed (wps):2997.051281955215
+step: 338	loss: 63003.40051174164	speed (wps):2997.2368583179727
+step: 379	loss: 70597.63615846634	speed (wps):2997.507298206995
+epoch: 3	train ppl: 200.88637685805622	val ppl: 249.38439568036472	best val: 249.38439568036472	time (s) spent in epoch: 315.45872616767883
+
+EPOCH 4 ------------------
+step: 10	loss: 2052.950391769409	speed (wps):2966.017011233266
+step: 51	loss: 9556.44050359726	speed (wps):2992.163096107628
+step: 92	loss: 17050.530049800873	speed (wps):2995.5407987448643
+step: 133	loss: 24503.861904144287	speed (wps):2996.879392505829
+step: 174	loss: 31782.370147705078	speed (wps):2997.692966472565
+step: 215	loss: 39207.89053440094	speed (wps):2998.2163238648445
+step: 256	loss: 46668.79454135895	speed (wps):2998.647405001052
+step: 297	loss: 54080.51245927811	speed (wps):2998.9325207723673
+step: 338	loss: 61461.66664361954	speed (wps):2999.2711584673198
+step: 379	loss: 68895.63446998596	speed (wps):2999.51183657073
+epoch: 4	train ppl: 177.03072692390904	val ppl: 235.43032099782604	best val: 235.43032099782604	time (s) spent in epoch: 315.2528975009918
+
+DONE
+
+Saving learning curves to TRANSFORMER_ADAM_model=TRANSFORMER_optimizer=ADAM_initial_lr=0.0002_batch_size=64_seq_len=35_hidden_size=1024_num_layers=4_dp_keep_prob=0.35_num_epochs=5_0/learning_curves.npy
+
+########## Setting Up Experiment ######################
+
+Putting log in TRANSFORMER_ADAM_model=TRANSFORMER_optimizer=ADAM_initial_lr=0.0002_batch_size=128_seq_len=35_hidden_size=1024_num_layers=2_dp_keep_prob=0.35_num_epochs=5_0
+Using the GPU
+Loading data from data
+  vocabulary size: 10000
+
+########## Running Main Loop ##########################
+
+EPOCH 0 ------------------
+step: 10	loss: 3210.8011078834534	speed (wps):5899.571234418156
+step: 30	loss: 7949.657065868378	speed (wps):5992.723398809326
+step: 50	loss: 12591.82983636856	speed (wps):6012.729060097063
+step: 70	loss: 17220.78488111496	speed (wps):6021.534144047034
+step: 90	loss: 21836.97911977768	speed (wps):6026.173652743464
+step: 110	loss: 26409.457437992096	speed (wps):6029.26860264544
+step: 130	loss: 30926.70353412628	speed (wps):6031.821235527035
+step: 150	loss: 35380.23370265961	speed (wps):6033.856208376699
+step: 170	loss: 39757.937219142914	speed (wps):6034.9382734256205
+step: 190	loss: 44118.34477901459	speed (wps):6036.157725512994
+epoch: 0	train ppl: 710.6094901884745	val ppl: 721.399746674141	best val: 721.399746674141	time (s) spent in epoch: 157.45082187652588
+
+EPOCH 1 ------------------
+step: 10	loss: 2367.094898223877	speed (wps):5972.805321101644
+step: 30	loss: 6619.335746765137	speed (wps):6017.492661717014
+step: 50	loss: 10837.38646030426	speed (wps):6027.8578020601
+step: 70	loss: 15025.746357440948	speed (wps):6032.258365549632
+step: 90	loss: 19174.44211244583	speed (wps):6034.676716286098
+step: 110	loss: 23286.996586322784	speed (wps):6036.054584648158
+step: 130	loss: 27377.470631599426	speed (wps):6037.162457937993
+step: 150	loss: 31432.082624435425	speed (wps):6038.093386751349
+step: 170	loss: 35446.88234090805	speed (wps):6038.829435970179
+step: 190	loss: 39469.559490680695	speed (wps):6039.406384332345
+epoch: 1	train ppl: 361.49701301671166	val ppl: 465.62226313007545	best val: 465.62226313007545	time (s) spent in epoch: 157.37062907218933
+
+EPOCH 2 ------------------
+step: 10	loss: 2216.0904574394226	speed (wps):5975.049024845206
+step: 30	loss: 6211.861500740051	speed (wps):6017.492661717014
+step: 50	loss: 10183.824639320374	speed (wps):6028.225833316889
+step: 70	loss: 14141.334810256958	speed (wps):6032.692504534837
+step: 90	loss: 18073.9950299263	speed (wps):6034.778307090267
+step: 110	loss: 21984.880352020264	speed (wps):6036.372433281286
+step: 130	loss: 25880.833489894867	speed (wps):6037.279254972213
+step: 150	loss: 29754.25842523575	speed (wps):6038.300732714229
+step: 170	loss: 33588.78655910492	speed (wps):6038.831864734899
+step: 190	loss: 37439.57607984543	speed (wps):6039.349675939058
+epoch: 2	train ppl: 268.45633804334454	val ppl: 370.28552399420334	best val: 370.28552399420334	time (s) spent in epoch: 157.37052011489868
+
+EPOCH 3 ------------------
+step: 10	loss: 2131.8361258506775	speed (wps):5977.443072814517
+step: 30	loss: 5980.534343719482	speed (wps):6019.497462511405
+step: 50	loss: 9804.214115142822	speed (wps):6029.29434924607
+step: 70	loss: 13621.326596736908	speed (wps):6032.31455242318
+step: 90	loss: 17421.78100347519	speed (wps):6034.920582561066
+step: 110	loss: 21202.663617134094	speed (wps):6036.403390155436
+step: 130	loss: 24972.974410057068	speed (wps):6037.743096929835
+step: 150	loss: 28725.89924097061	speed (wps):6038.927650222186
+step: 170	loss: 32443.154981136322	speed (wps):6040.569011221968
+step: 190	loss: 36179.37580823898	speed (wps):6042.172363113513
+epoch: 3	train ppl: 222.8197838700589	val ppl: 317.3855631081833	best val: 317.3855631081833	time (s) spent in epoch: 157.27583169937134
+
+EPOCH 4 ------------------
+step: 10	loss: 2070.369064807892	speed (wps):5998.224494473411
+step: 30	loss: 5813.635947704315	speed (wps):6045.961701539443
+step: 50	loss: 9534.254548549652	speed (wps):6055.078258816228
+step: 70	loss: 13251.260600090027	speed (wps):6059.926889292587
+step: 90	loss: 16954.941680431366	speed (wps):6062.347009452447
+step: 110	loss: 20641.79186820984	speed (wps):6064.203645115433
+step: 130	loss: 24322.794375419617	speed (wps):6064.776808157422
+step: 150	loss: 27986.964337825775	speed (wps):6065.352367725074
+step: 170	loss: 31617.007083892822	speed (wps):6066.015500879337
+step: 190	loss: 35264.60577249527	speed (wps):6066.5111073818625
+epoch: 4	train ppl: 194.61393081965633	val ppl: 292.7928648456156	best val: 292.7928648456156	time (s) spent in epoch: 156.68064832687378
+
+DONE
+
+Saving learning curves to TRANSFORMER_ADAM_model=TRANSFORMER_optimizer=ADAM_initial_lr=0.0002_batch_size=128_seq_len=35_hidden_size=1024_num_layers=2_dp_keep_prob=0.35_num_epochs=5_0/learning_curves.npy
+
+########## Setting Up Experiment ######################
+
+Putting log in TRANSFORMER_ADAM_model=TRANSFORMER_optimizer=ADAM_initial_lr=0.0002_batch_size=128_seq_len=35_hidden_size=1500_num_layers=2_dp_keep_prob=0.35_num_epochs=5_0
+Using the GPU
+Loading data from data
+  vocabulary size: 10000
+
+########## Setting Up Experiment ######################
+
+Putting log in TRANSFORMER_ADAM_model=TRANSFORMER_optimizer=ADAM_initial_lr=0.0002_batch_size=128_seq_len=35_hidden_size=1024_num_layers=3_dp_keep_prob=0.35_num_epochs=5_0
+Using the GPU
+Loading data from data
+  vocabulary size: 10000
+
+########## Running Main Loop ##########################
+
+EPOCH 0 ------------------
+step: 10	loss: 3189.128966331482	speed (wps):4321.146484969511
+step: 30	loss: 7897.608194351196	speed (wps):4371.327333996969
+step: 50	loss: 12538.810248374939	speed (wps):4382.368046221056
+step: 70	loss: 17168.3979511261	speed (wps):4387.549758559732
+step: 90	loss: 21791.385219097137	speed (wps):4390.5208098850235
+step: 110	loss: 26389.649274349213	speed (wps):4392.381309342175
+step: 130	loss: 30941.133420467377	speed (wps):4394.112716381795
+step: 150	loss: 35430.7261133194	speed (wps):4395.714013721237
+step: 170	loss: 39846.09095573425	speed (wps):4397.715247581102
+step: 190	loss: 44239.76035833359	speed (wps):4400.571355582851
+
+########## Setting Up Experiment ######################
+
+Putting log in TRANSFORMER_ADAM_model=TRANSFORMER_optimizer=ADAM_initial_lr=0.0002_batch_size=128_seq_len=35_hidden_size=1500_num_layers=3_dp_keep_prob=0.35_num_epochs=5_0
+Using the GPU
+Loading data from data
+  vocabulary size: 10000
+
+########## Setting Up Experiment ######################
+
+Putting log in TRANSFORMER_ADAM_model=TRANSFORMER_optimizer=ADAM_initial_lr=0.0003_batch_size=64_seq_len=35_hidden_size=1500_num_layers=3_dp_keep_prob=0.35_num_epochs=5_0
+Using the GPU
+Loading data from data
+  vocabulary size: 10000
+
+########## Setting Up Experiment ######################
+
+Putting log in TRANSFORMER_ADAM_model=TRANSFORMER_optimizer=ADAM_initial_lr=0.0003_batch_size=64_seq_len=35_hidden_size=1024_num_layers=4_dp_keep_prob=0.35_num_epochs=5_0
+Using the GPU
+Loading data from data
+  vocabulary size: 10000
+
+########## Running Main Loop ##########################
+
+EPOCH 0 ------------------
+step: 10	loss: 3046.844117641449	speed (wps):2871.9036696871667
+step: 51	loss: 12611.739287376404	speed (wps):2951.1428874855765
+step: 92	loss: 22116.08832836151	speed (wps):2960.9113181794246
+step: 133	loss: 31512.688291072845	speed (wps):2965.0325303721925
+step: 174	loss: 40629.8575425148	speed (wps):2967.4443146159124
+step: 215	loss: 49671.99824094772	speed (wps):2970.1096762717343
+step: 256	loss: 58507.156665325165	speed (wps):2974.0104887452353
+step: 297	loss: 67186.45696640015	speed (wps):2977.373108421035
+step: 338	loss: 75744.5554447174	speed (wps):2979.830855635876
+step: 379	loss: 84242.84874916077	speed (wps):2981.8220689883256
+epoch: 0	train ppl: 541.2159994864614	val ppl: 418.1464331986645	best val: 418.1464331986645	time (s) spent in epoch: 317.0474395751953
+
+EPOCH 1 ------------------
+step: 10	loss: 2269.445049762726	speed (wps):2969.1604396675293
+step: 51	loss: 10567.756474018097	speed (wps):2991.166183440675
+step: 92	loss: 18791.880869865417	speed (wps):2994.272714339635
+step: 133	loss: 26922.919273376465	speed (wps):2995.2635913650984
+step: 174	loss: 34866.072301864624	speed (wps):2995.781846912957
+step: 215	loss: 42913.4677362442	speed (wps):2996.4219364229325
+step: 256	loss: 50944.47803258896	speed (wps):2996.7878730589287
+step: 297	loss: 58901.46333694458	speed (wps):2996.9481508512254
+step: 338	loss: 66801.51572942734	speed (wps):2997.297667887889
+step: 379	loss: 74713.30774307251	speed (wps):2997.59394013266
+epoch: 1	train ppl: 271.6216401346242	val ppl: 297.734959691111	best val: 297.734959691111	time (s) spent in epoch: 315.43893456459045
+
+EPOCH 2 ------------------
+step: 10	loss: 2131.5598678588867	speed (wps):2971.2163964964093
+step: 51	loss: 9920.868737697601	speed (wps):2992.8802771326013
+step: 92	loss: 17679.470880031586	speed (wps):2996.115121017387
+step: 133	loss: 25375.149335861206	speed (wps):2997.461644496143
+step: 174	loss: 32900.44004678726	speed (wps):2998.2089583483985
+step: 215	loss: 40560.757179260254	speed (wps):2998.577667519698
+step: 256	loss: 48237.91032791138	speed (wps):2998.773184677678
+step: 297	loss: 55858.19186449051	speed (wps):2999.046469997873
+step: 338	loss: 63434.456005096436	speed (wps):2999.3184987255217
+step: 379	loss: 71050.44794082642	speed (wps):2999.3694653854427
+epoch: 2	train ppl: 207.4659690868274	val ppl: 259.52312648630084	best val: 259.52312648630084	time (s) spent in epoch: 315.2688446044922
+
+EPOCH 3 ------------------
+step: 10	loss: 2059.232895374298	speed (wps):2973.5592227057455
+step: 51	loss: 9566.88707113266	speed (wps):2995.6533048528536
+step: 92	loss: 17064.424777030945	speed (wps):2998.5282654166062
+step: 133	loss: 24509.594795703888	speed (wps):2999.0825692173376
+step: 174	loss: 31781.448380947113	speed (wps):2999.8155775370783
+step: 215	loss: 39199.521334171295	speed (wps):3000.289275040173
+step: 256	loss: 46655.8949971199	speed (wps):3000.6269709037547
+step: 297	loss: 54057.17597723007	speed (wps):3000.7752475525713
+step: 338	loss: 61428.76934528351	speed (wps):3000.8298789114574
+step: 379	loss: 68847.29678153992	speed (wps):3001.0081583829297
+epoch: 3	train ppl: 176.23110328007698	val ppl: 240.64290121331535	best val: 240.64290121331535	time (s) spent in epoch: 315.0903306007385
+
+EPOCH 4 ------------------
+step: 10	loss: 2007.6140236854553	speed (wps):2972.889210312774
+step: 51	loss: 9331.82872056961	speed (wps):2995.071157415484
+step: 92	loss: 16642.991399765015	speed (wps):2998.122370475967
+step: 133	loss: 23903.760035037994	speed (wps):2999.4115536700847
+step: 174	loss: 30987.65180826187	speed (wps):3000.2779555189745
+step: 215	loss: 38230.911214351654	speed (wps):3000.587691483923
+step: 256	loss: 45514.45987701416	speed (wps):3000.9110705920034
+step: 297	loss: 52744.734156131744	speed (wps):3001.046896126873
+step: 338	loss: 59944.19389486313	speed (wps):3001.1871760840945
+step: 379	loss: 67200.84855079651	speed (wps):3001.1851168516273
+epoch: 4	train ppl: 155.8506488314831	val ppl: 227.31526755343384	best val: 227.31526755343384	time (s) spent in epoch: 315.0710961818695
+
+DONE
+
+Saving learning curves to TRANSFORMER_ADAM_model=TRANSFORMER_optimizer=ADAM_initial_lr=0.0003_batch_size=64_seq_len=35_hidden_size=1024_num_layers=4_dp_keep_prob=0.35_num_epochs=5_0/learning_curves.npy
+
+########## Setting Up Experiment ######################
+
+Putting log in TRANSFORMER_ADAM_model=TRANSFORMER_optimizer=ADAM_initial_lr=0.0003_batch_size=128_seq_len=35_hidden_size=1500_num_layers=2_dp_keep_prob=0.35_num_epochs=5_0
+Using the GPU
+Loading data from data
+  vocabulary size: 10000
+
+########## Setting Up Experiment ######################
+
+Putting log in TRANSFORMER_ADAM_model=TRANSFORMER_optimizer=ADAM_initial_lr=0.0003_batch_size=128_seq_len=35_hidden_size=1024_num_layers=4_dp_keep_prob=0.35_num_epochs=5_0
+Using the GPU
+Loading data from data
+  vocabulary size: 10000
+
+########## Running Main Loop ##########################
+
+EPOCH 0 ------------------
+step: 10	loss: 3016.7389059066772	speed (wps):3395.116681660053
+step: 30	loss: 7666.256170272827	speed (wps):3431.881743247992
+step: 50	loss: 12309.33780670166	speed (wps):3439.965402292629
+step: 70	loss: 16939.3661236763	speed (wps):3443.4791480602644
+step: 90	loss: 21559.878718852997	speed (wps):3445.4483441989514
+step: 110	loss: 26129.3084692955	speed (wps):3446.669864234445
+step: 130	loss: 30634.52466726303	speed (wps):3447.5771039613815
+step: 150	loss: 35051.01702213287	speed (wps):3448.231278684641
+step: 170	loss: 39358.47378730774	speed (wps):3448.750976400049
+step: 190	loss: 43633.036959171295	speed (wps):3449.1435839546198
+
+########## Setting Up Experiment ######################
+
+Putting log in TRANSFORMER_ADAM_model=TRANSFORMER_optimizer=ADAM_initial_lr=0.0003_batch_size=128_seq_len=35_hidden_size=1500_num_layers=4_dp_keep_prob=0.35_num_epochs=5_0
+Using the GPU
+Loading data from data
+  vocabulary size: 10000
+Set compute mode to DEFAULT for GPU 00000000:83:00.0.
+All done.

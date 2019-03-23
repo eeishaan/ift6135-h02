@@ -1,0 +1,287 @@
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) openmpi/2.1.1
+
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650167.gpu-srv1.helios.SC: line 1: 24048 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650167.gpu-srv1.helios.SC: line 1: 24093 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650167.gpu-srv1.helios.SC: line 1: 24138 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650167.gpu-srv1.helios.SC: line 1: 24184 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+Traceback (most recent call last):
+  File "ptb-lm.py", line 314, in <module>
+    n_blocks=args.num_layers, dropout=1.-args.dp_keep_prob) 
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/models.py", line 531, in make_model
+    attn = MultiHeadedAttention(n_heads, n_units)
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/models.py", line 412, in __init__
+    assert n_units % n_heads == 0
+AssertionError
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650167.gpu-srv1.helios.SC: line 1: 24277 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650167.gpu-srv1.helios.SC: line 1: 24322 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650167.gpu-srv1.helios.SC: line 1: 24366 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650167.gpu-srv1.helios.SC: line 1: 24413 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+Traceback (most recent call last):
+  File "ptb-lm.py", line 453, in <module>
+    val_ppl, val_loss = run_epoch(model, valid_data)
+  File "ptb-lm.py", line 382, in run_epoch
+    outputs = model.forward(batch.data, batch.mask).transpose(1,0)
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/models.py", line 524, in forward
+    return F.log_softmax(self.output_layer(self.transformer_stack(embeddings, mask)), dim=-1)
+  File "/miniconda/lib/python3.6/site-packages/torch/nn/modules/module.py", line 489, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/models.py", line 511, in forward
+    x = layer(x, mask)
+  File "/miniconda/lib/python3.6/site-packages/torch/nn/modules/module.py", line 489, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/models.py", line 496, in forward
+    return self.sublayer[1](x, self.feed_forward)
+  File "/miniconda/lib/python3.6/site-packages/torch/nn/modules/module.py", line 489, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/models.py", line 607, in forward
+    return x + self.dropout(sublayer(self.norm(x)))
+  File "/miniconda/lib/python3.6/site-packages/torch/nn/modules/module.py", line 489, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/models.py", line 622, in forward
+    return self.w_2(self.dropout(F.relu(self.w_1(x))))
+  File "/miniconda/lib/python3.6/site-packages/torch/nn/modules/module.py", line 489, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/miniconda/lib/python3.6/site-packages/torch/nn/modules/linear.py", line 67, in forward
+    return F.linear(input, self.weight, self.bias)
+  File "/miniconda/lib/python3.6/site-packages/torch/nn/functional.py", line 1354, in linear
+    output = input.matmul(weight.t())
+RuntimeError: CUDA out of memory. Tried to allocate 35.00 MiB (GPU 0; 4.63 GiB total capacity; 4.05 GiB already allocated; 32.38 MiB free; 246.49 MiB cached)
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+Traceback (most recent call last):
+  File "ptb-lm.py", line 314, in <module>
+    n_blocks=args.num_layers, dropout=1.-args.dp_keep_prob) 
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/models.py", line 531, in make_model
+    attn = MultiHeadedAttention(n_heads, n_units)
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/models.py", line 412, in __init__
+    assert n_units % n_heads == 0
+AssertionError
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650167.gpu-srv1.helios.SC: line 1: 24625 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+Traceback (most recent call last):
+  File "ptb-lm.py", line 314, in <module>
+    n_blocks=args.num_layers, dropout=1.-args.dp_keep_prob) 
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/models.py", line 531, in make_model
+    attn = MultiHeadedAttention(n_heads, n_units)
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/models.py", line 412, in __init__
+    assert n_units % n_heads == 0
+AssertionError
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650167.gpu-srv1.helios.SC: line 1: 24717 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+Traceback (most recent call last):
+  File "ptb-lm.py", line 314, in <module>
+    n_blocks=args.num_layers, dropout=1.-args.dp_keep_prob) 
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/models.py", line 531, in make_model
+    attn = MultiHeadedAttention(n_heads, n_units)
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/models.py", line 412, in __init__
+    assert n_units % n_heads == 0
+AssertionError
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650167.gpu-srv1.helios.SC: line 1: 25059 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+Traceback (most recent call last):
+  File "ptb-lm.py", line 314, in <module>
+    n_blocks=args.num_layers, dropout=1.-args.dp_keep_prob) 
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/models.py", line 531, in make_model
+    attn = MultiHeadedAttention(n_heads, n_units)
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/models.py", line 412, in __init__
+    assert n_units % n_heads == 0
+AssertionError
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+Traceback (most recent call last):
+  File "ptb-lm.py", line 453, in <module>
+    val_ppl, val_loss = run_epoch(model, valid_data)
+  File "ptb-lm.py", line 398, in run_epoch
+    loss = loss_fn(outputs.contiguous().view(-1, model.vocab_size), tt)
+  File "/miniconda/lib/python3.6/site-packages/torch/nn/modules/module.py", line 489, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/miniconda/lib/python3.6/site-packages/torch/nn/modules/loss.py", line 904, in forward
+    ignore_index=self.ignore_index, reduction=self.reduction)
+  File "/miniconda/lib/python3.6/site-packages/torch/nn/functional.py", line 1970, in cross_entropy
+    return nll_loss(log_softmax(input, 1), target, weight, None, ignore_index, None, reduction)
+  File "/miniconda/lib/python3.6/site-packages/torch/nn/functional.py", line 1295, in log_softmax
+    ret = input.log_softmax(dim)
+RuntimeError: CUDA out of memory. Tried to allocate 171.00 MiB (GPU 0; 4.63 GiB total capacity; 3.93 GiB already allocated; 15.75 MiB free; 384.54 MiB cached)
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+Traceback (most recent call last):
+  File "ptb-lm.py", line 314, in <module>
+    n_blocks=args.num_layers, dropout=1.-args.dp_keep_prob) 
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/models.py", line 531, in make_model
+    attn = MultiHeadedAttention(n_heads, n_units)
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/models.py", line 412, in __init__
+    assert n_units % n_heads == 0
+AssertionError
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650167.gpu-srv1.helios.SC: line 1: 25415 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650167.gpu-srv1.helios.SC: line 1: 25461 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650167.gpu-srv1.helios.SC: line 1: 25508 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650167.gpu-srv1.helios.SC: line 1: 25553 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650167.gpu-srv1.helios.SC: line 1: 25601 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+Traceback (most recent call last):
+  File "ptb-lm.py", line 314, in <module>
+    n_blocks=args.num_layers, dropout=1.-args.dp_keep_prob) 
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/models.py", line 531, in make_model
+    attn = MultiHeadedAttention(n_heads, n_units)
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/models.py", line 412, in __init__
+    assert n_units % n_heads == 0
+AssertionError
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650167.gpu-srv1.helios.SC: line 1: 25992 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650167.gpu-srv1.helios.SC: line 1: 26039 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+Traceback (most recent call last):
+  File "ptb-lm.py", line 314, in <module>
+    n_blocks=args.num_layers, dropout=1.-args.dp_keep_prob) 
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/models.py", line 531, in make_model
+    attn = MultiHeadedAttention(n_heads, n_units)
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/models.py", line 412, in __init__
+    assert n_units % n_heads == 0
+AssertionError
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650167.gpu-srv1.helios.SC: line 1: 26131 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/650167.gpu-srv1.helios.SC: line 1: 26177 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+Traceback (most recent call last):
+  File "ptb-lm.py", line 453, in <module>
+    val_ppl, val_loss = run_epoch(model, valid_data)
+  File "ptb-lm.py", line 382, in run_epoch
+    outputs = model.forward(batch.data, batch.mask).transpose(1,0)
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/models.py", line 524, in forward
+    return F.log_softmax(self.output_layer(self.transformer_stack(embeddings, mask)), dim=-1)
+  File "/miniconda/lib/python3.6/site-packages/torch/nn/modules/module.py", line 489, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/models.py", line 511, in forward
+    x = layer(x, mask)
+  File "/miniconda/lib/python3.6/site-packages/torch/nn/modules/module.py", line 489, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/models.py", line 496, in forward
+    return self.sublayer[1](x, self.feed_forward)
+  File "/miniconda/lib/python3.6/site-packages/torch/nn/modules/module.py", line 489, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/models.py", line 607, in forward
+    return x + self.dropout(sublayer(self.norm(x)))
+  File "/miniconda/lib/python3.6/site-packages/torch/nn/modules/module.py", line 489, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/models.py", line 622, in forward
+    return self.w_2(self.dropout(F.relu(self.w_1(x))))
+  File "/miniconda/lib/python3.6/site-packages/torch/nn/modules/module.py", line 489, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/miniconda/lib/python3.6/site-packages/torch/nn/modules/linear.py", line 67, in forward
+    return F.linear(input, self.weight, self.bias)
+  File "/miniconda/lib/python3.6/site-packages/torch/nn/functional.py", line 1354, in linear
+    output = input.matmul(weight.t())
+RuntimeError: CUDA out of memory. Tried to allocate 35.00 MiB (GPU 0; 4.63 GiB total capacity; 4.05 GiB already allocated; 32.38 MiB free; 246.49 MiB cached)
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+Traceback (most recent call last):
+  File "ptb-lm.py", line 314, in <module>
+    n_blocks=args.num_layers, dropout=1.-args.dp_keep_prob) 
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/models.py", line 531, in make_model
+    attn = MultiHeadedAttention(n_heads, n_units)
+  File "/rap/jvb-000-aa/COURS2019/etudiants/user36/ift6135-h02/assignment2/models.py", line 412, in __init__
+    assert n_units % n_heads == 0
+AssertionError
+
+==============NVSMI LOG==============
+
+Timestamp                           : Fri Mar 22 14:20:38 2019
+Driver Version                      : 410.73
+CUDA Version                        : 10.0
+
+Attached GPUs                       : 8
+GPU 00000000:83:00.0
+    Accounting Mode                 : Enabled
+    Accounting Mode Buffer Size     : 4000
+    Accounted Processes
+        Process ID                  : 23841
+            GPU Utilization         : 81 %
+            Memory Utilization      : 34 %
+            Max memory usage        : 2440 MiB
+            Time                    : 915332 ms
+            Is Running              : 0
+        Process ID                  : 24482
+            GPU Utilization         : 84 %
+            Memory Utilization      : 34 %
+            Max memory usage        : 4731 MiB
+            Time                    : 281111 ms
+            Is Running              : 0
+        Process ID                  : 24831
+            GPU Utilization         : 79 %
+            Memory Utilization      : 32 %
+            Max memory usage        : 3408 MiB
+            Time                    : 1596538 ms
+            Is Running              : 0
+        Process ID                  : 25130
+            GPU Utilization         : 88 %
+            Memory Utilization      : 36 %
+            Max memory usage        : 4067 MiB
+            Time                    : 797556 ms
+            Is Running              : 0
+        Process ID                  : 25327
+            GPU Utilization         : 84 %
+            Memory Utilization      : 34 %
+            Max memory usage        : 4722 MiB
+            Time                    : 223292 ms
+            Is Running              : 0
+        Process ID                  : 25715
+            GPU Utilization         : 79 %
+            Memory Utilization      : 32 %
+            Max memory usage        : 3408 MiB
+            Time                    : 1589723 ms
+            Is Running              : 0
+        Process ID                  : 26246
+            GPU Utilization         : 84 %
+            Memory Utilization      : 34 %
+            Max memory usage        : 4731 MiB
+            Time                    : 281492 ms
+            Is Running              : 0
+        Process ID                  : 14158
+            GPU Utilization         : 0 %
+            Memory Utilization      : 0 %
+            Max memory usage        : 0 MiB
+            Time                    : 869 ms
+            Is Running              : 0
+
