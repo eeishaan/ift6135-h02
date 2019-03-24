@@ -167,10 +167,10 @@ experiment_path = os.path.join(args.save_dir+'_'.join([argsdict['model'],
 # Increment a counter so that previous results with the same args will not
 # be overwritten. Comment out the next four lines if you only want to keep
 # the most recent results.
-# i = 0
-# while os.path.exists(experiment_path + "_" + str(i)):
-#     i += 1
-# experiment_path = experiment_path + "_" + str(i)
+i = 0
+while os.path.exists(experiment_path + "_" + str(i)):
+    i += 1
+experiment_path = experiment_path + "_" + str(i)
 
 # Creates an experimental directory and dumps all the args to a text file
 os.mkdir(experiment_path)
@@ -432,7 +432,7 @@ val_ppls = []
 val_losses = []
 best_val_so_far = np.inf
 times = []
-clock = []
+clock = [0.]
 
 # In debug mode, only run one epoch
 if args.debug:
@@ -476,7 +476,7 @@ for epoch in range(num_epochs):
     train_losses.extend(train_loss)
     val_losses.extend(val_loss)
     times.append(time.time() - t0)
-    clock.append((time.time() - t0) + np.sum(clock))
+    clock.append((time.time() - t0) + clock[-1])
     log_str = 'epoch: ' + str(epoch) + '\t' \
             + 'train ppl: ' + str(train_ppl) + '\t' \
             + 'val ppl: ' + str(val_ppl)  + '\t' \
@@ -511,8 +511,8 @@ plt.legend()
 
 plt.subplot(122)
 plt.title(args.model)
-plt.plot(clock[1:], train_ppls[1:], label="Train")
-plt.plot(clock[1:], val_ppls[1:], label="Valid")
+plt.plot(clock[2:], train_ppls[1:], label="Train")
+plt.plot(clock[2:], val_ppls[1:], label="Valid")
 plt.xlabel("Times")
 plt.ylabel("PPL")
 plt.legend()

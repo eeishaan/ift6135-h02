@@ -1,0 +1,22 @@
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) openmpi/2.1.1
+
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+Traceback (most recent call last):
+  File "ptb-lm.py", line 176, in <module>
+    os.mkdir(experiment_path)
+FileExistsError: [Errno 17] File exists: './results/TRANSFORMER_SGD_model=TRANSFORMER_optimizer=SGD_initial_lr=16_batch_size=64_seq_len=35_hidden_size=512_num_layers=5_dp_keep_prob=0.9'
+
+==============NVSMI LOG==============
+
+Timestamp                           : Sun Mar 24 16:21:11 2019
+Driver Version                      : 410.73
+CUDA Version                        : 10.0
+
+Attached GPUs                       : 8
+GPU 00000000:83:00.0
+    Accounting Mode                 : Enabled
+    Accounting Mode Buffer Size     : 4000
+    Accounted Processes             : None
+

@@ -60,15 +60,12 @@ def plot_optimizer(args):
     learning_curves_G = np.load(LOAD_PATH_G)[()]
     learning_curves_T = np.load(LOAD_PATH_T)[()]
 
-    train_ppls_R = learning_curves_R["train_ppls"]
     valid_ppls_R = learning_curves_R["val_ppls"]
     clock_R = learning_curves_R["clock"]
 
-    train_ppls_G = learning_curves_G["train_ppls"]
     valid_ppls_G = learning_curves_G["val_ppls"]
     clock_G = learning_curves_G["clock"]
 
-    train_ppls_T = learning_curves_T["train_ppls"]
     valid_ppls_T = learning_curves_T["val_ppls"]
     clock_T = learning_curves_T["clock"]
 
@@ -80,17 +77,17 @@ def plot_optimizer(args):
     plt.figure(figsize=(18, 6))
     plt.subplot(121)
     plt.title()
-    plt.plot(val_ppls_R[1:], label="RNN")
-    plt.plot(val_ppls_G[1:], label="GRU")
-    plt.plot(val_ppls_T[1:], label="Transformer")
+    plt.plot(valid_ppls_R[1:], label="RNN")
+    plt.plot(valid_ppls_G[1:], label="GRU")
+    plt.plot(valid_ppls_T[1:], label="Transformer")
     plt.xlabel("Epochs")
     plt.ylabel("PPL")
     plt.legend()
 
     plt.subplot(122)
-    plt.plot(clock_R[1:], val_ppls_R[1:], label="RNN")
-    plt.plot(clock_G[1:], val_ppls_G[1:], label="GRU")
-    plt.plot(clock_T[1:], val_ppls_T[1:], label="Transformer")
+    plt.plot(clock_R[1:], valid_ppls_R[1:], label="RNN")
+    plt.plot(clock_G[1:], valid_ppls_G[1:], label="GRU")
+    plt.plot(clock_T[1:], valid_ppls_T[1:], label="Transformer")
     plt.xlabel("Times")
     plt.ylabel("PPL")
     plt.legend()
