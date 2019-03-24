@@ -377,6 +377,8 @@ def run_epoch(model, data, is_train=False, lr=1.0):
     loss_t_tensor = torch.zeros(model.seq_len).cuda()
     # LOOP THROUGH MINIBATCHES
     for step, (x, y) in enumerate(ptb_iterator(data, model.batch_size, model.seq_len)):
+        hidden = model.init_hidden()
+        hidden = hidden.to(device)
         batch_iter += 1
         if args.model == 'TRANSFORMER':
             batch = Batch(torch.from_numpy(x).long().to(device))
@@ -401,7 +403,7 @@ def run_epoch(model, data, is_train=False, lr=1.0):
         loss_t = []
         for i in range(targets.shape[0]):
             loss_t.append(loss_fn(outputs[i, :, :], targets[i, :]))
-        loss_t_tensor += torch.stack(loss_t)
+        loss_t_tensor += torch.stack(loss_t).detach()
         costs += loss.data.item() * model.seq_len
         losses.append(costs)
         iters += model.seq_len
