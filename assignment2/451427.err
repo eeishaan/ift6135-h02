@@ -1,0 +1,82 @@
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) openmpi/2.1.1
+
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/651012.gpu-srv1.helios.SC: line 1: 207761 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/651012.gpu-srv1.helios.SC: line 1: 207884 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/651012.gpu-srv1.helios.SC: line 1: 207933 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/651012.gpu-srv1.helios.SC: line 1: 207979 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/651012.gpu-srv1.helios.SC: line 1: 208026 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/651012.gpu-srv1.helios.SC: line 1: 208075 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+/miniconda/lib/python3.6/site-packages/torch/nn/functional.py:1320: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/651012.gpu-srv1.helios.SC: line 1: 208338 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/651012.gpu-srv1.helios.SC: line 1: 208384 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/651012.gpu-srv1.helios.SC: line 1: 208430 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/651012.gpu-srv1.helios.SC: line 1: 208477 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/651012.gpu-srv1.helios.SC: line 1: 208523 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+/miniconda/lib/python3.6/site-packages/torch/nn/functional.py:1320: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+[31mFATAL:  [0m interrupted by signal terminated
+
+==============NVSMI LOG==============
+
+Timestamp                           : Sat Mar 23 20:33:00 2019
+Driver Version                      : 410.73
+CUDA Version                        : 10.0
+
+Attached GPUs                       : 8
+GPU 00000000:04:00.0
+    Accounting Mode                 : Enabled
+    Accounting Mode Buffer Size     : 4000
+    Accounted Processes
+        Process ID                  : 208146
+            GPU Utilization         : 94 %
+            Memory Utilization      : 43 %
+            Max memory usage        : 1268 MiB
+            Time                    : 745984 ms
+            Is Running              : 0
+        Process ID                  : 208591
+            GPU Utilization         : 94 %
+            Memory Utilization      : 42 %
+            Max memory usage        : 1158 MiB
+            Time                    : 564517 ms
+            Is Running              : 0
+        Process ID                  : 208724
+            GPU Utilization         : 94 %
+            Memory Utilization      : 43 %
+            Max memory usage        : 1267 MiB
+            Time                    : 503627 ms
+            Is Running              : 0
+        Process ID                  : 7253
+            GPU Utilization         : 94 %
+            Memory Utilization      : 43 %
+            Max memory usage        : 0 MiB
+            Time                    : 503769 ms
+            Is Running              : 0
+

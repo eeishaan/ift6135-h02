@@ -1,0 +1,20 @@
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) openmpi/2.1.1
+
+[33mWARNING:[0m underlay of /usr/bin/nvidia-smi required more than 50 (668) bind mounts
+*** stack smashing detected ***: python terminated
+/var/spool/torque/mom_priv/jobs/651629.gpu-srv1.helios.SC: line 1: 236559 User defined signal 2   bash -c "module --force purge && singularity exec $SINGULARITY_ARGS $EXEC_ARGS"
+
+==============NVSMI LOG==============
+
+Timestamp                           : Sun Mar 24 12:40:56 2019
+Driver Version                      : 410.73
+CUDA Version                        : 10.0
+
+Attached GPUs                       : 8
+GPU 00000000:05:00.0
+    Accounting Mode                 : Enabled
+    Accounting Mode Buffer Size     : 4000
+    Accounted Processes             : None
+
