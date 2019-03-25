@@ -8,6 +8,7 @@ import torch.nn as nn
 import time
 from torch.autograd import Variable
 from models_2 import GRU, RNN
+from models_2 import make_model as TRANSFORMER
 import matplotlib.pyplot as plt
 
 np = numpy
@@ -145,8 +146,9 @@ def run_epoch(model, modeltype, data, is_train=False, lr=1.0, gradcheck=False):
     loss_t_tensor = torch.zeros(model.seq_len).cuda()
     # LOOP THROUGH MINIBATCHES
     for step, (x, y) in enumerate(ptb_iterator(data, model.batch_size, model.seq_len)):
-        hidden = model.init_hidden()
-        hidden = hidden.to(device)
+        if modeltype != 'TRANSFORMER':
+            hidden = model.init_hidden()
+            hidden = hidden.to(device)
         batch_iter += 1
         if modeltype == 'TRANSFORMER':
             batch = Batch(torch.from_numpy(x).long().to(device))
@@ -175,7 +177,7 @@ def run_epoch(model, modeltype, data, is_train=False, lr=1.0, gradcheck=False):
         costs += loss.data.item() * model.seq_len
         losses.append(costs)
         iters += model.seq_len
-        if is_train:  # Only update parameters if training 
+        if is_train and modeltype is not "TRANSFORMER":  # Only update parameters if training 
             for i in range((len(hiddens))):
                 for j in range(len(hiddens[i])):
                     hiddens[i][j].retain_grad()
@@ -183,8 +185,10 @@ def run_epoch(model, modeltype, data, is_train=False, lr=1.0, gradcheck=False):
         if gradcheck:
             break
     loss_t_tensor = loss_t_tensor / batch_iter
-    return np.exp(costs / iters), loss_t_tensor, hiddens
-
+    if modeltype != "TRANSFORMER":
+        return np.exp(costs / iters), loss_t_tensor, hiddens
+    else:
+        return np.exp(costs / iters), loss_t_tensor
 def calculate_gradient_norm(gradients):
     grads = []
     for i in range((len(gradients))):
@@ -199,7 +203,7 @@ def calculate_gradient_norm(gradients):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Text generation")
-    parser.add_argument("--gen_length", type=int, default=20)
+    parser.add_argument("--gen_length", type=int, default=35)
     parser.add_argument("--num_seq", type=int, default=10)
     args = parser.parse_args()
     gen_length = args.gen_length
@@ -209,41 +213,67 @@ if __name__ == "__main__":
         + "_dp_keep_prob=0.35_save_best_12/"
     rnn_path = "RNN_ADAM_model=RNN_optimizer=ADAM_initial_lr=0.0001_batch_size=20"\
         + "_seq_len=35_hidden_size=1500_num_layers=2_dp_keep_prob=0.35_save_best_9/"
+    transformer_path = "TRANSFORMER_SGD_LR_SCHEDULE_model=TRANSFORMER"\
+        + "_optimizer=SGD_LR_SCHEDULE_initial_lr=20_batch_size=128"\
+        + "_seq_len=35_hidden_size=512_num_layers=6_dp_keep_prob=0.9_save_best_4/"
     device = "cuda"
     
     gru_args = load_args(gru_path)
     rnn_args = load_args(rnn_path)
     model_gru = GRU(**gru_args).to(device)
     model_rnn = RNN(**rnn_args).to(device)
+    model_trans = TRANSFORMER(vocab_size=10000, n_units=512, 
+                        n_blocks=6, dropout=1.-0.9).to(device)
+    model_trans.batch_size = 128
+    model_trans.seq_len = 35
+    model_trans.vocab_size = 10000
+
     model_gru.load_state_dict(torch.load(gru_path + "best_params.pt"))
     model_rnn.load_state_dict(torch.load(rnn_path + "best_params.pt"))
-    
+    model_trans.load_state_dict(torch.load(transformer_path + "best_params.pt"))
     word_to_id, id_to_word = build_vocab("./data/ptb.train.txt")
     random_batch = torch.tensor(
-        [np.random.randint(0, len(id_to_word)) for i in range(gen_length)]
+        [np.random.randint(0, len(id_to_word)) for i in range(num_seq)]
     ).to(device)
     sequences_gru = model_gru.generate(random_batch, 0, gen_length)
     sequences_rnn = model_rnn.generate(random_batch, 0, gen_length)
-
+    sequences_gru2 = model_gru.generate(random_batch, 0, 2*gen_length)
+    sequences_rnn2 = model_rnn.generate(random_batch, 0, 2*gen_length)
     sequences_to_file(sequences_gru, id_to_word, filename="GRUgen.txt")
     sequences_to_file(sequences_rnn, id_to_word, filename="RNNgen.txt")
+    sequences_to_file(sequences_gru2, id_to_word, filename="GRUgenx2.txt")
+    sequences_to_file(sequences_rnn2, id_to_word, filename="RNNgenx2.txt")
 
     valid_path = "./data/ptb.valid.txt"
     train_path = "./data/ptb.train.txt"
     valid_data = _file_to_word_ids(valid_path, word_to_id)
     train_data = _file_to_word_ids(train_path, word_to_id)
 
-    _, loss_t_tensor_gru, _ = run_epoch(model_gru, "GRU", valid_data, is_train=False, lr=1)
-    _, loss_t_tensor_rnn, _ = run_epoch(model_rnn, "RNN", valid_data, is_train=False, lr=1)
-    _, _, hiddens_gru = run_epoch(model_gru, "GRU", train_data, is_train=True, lr=1, gradcheck=True)
-    _, _, hiddens_rnn = run_epoch(model_rnn, "RNN", train_data, is_train=True, lr=1, gradcheck=True)
+    _, loss_t_tensor_gru, _ = run_epoch(
+        model_gru, "GRU", valid_data, is_train=False, lr=1
+    )
+    _, loss_t_tensor_rnn, _ = run_epoch(
+        model_rnn, "RNN", valid_data, is_train=False, lr=1
+    )
+    _, loss_t_tensor_trans = run_epoch(
+        model_trans, "TRANSFORMER", valid_data, is_train=False, lr=1
+    )
+
+    _, _, hiddens_gru = run_epoch(
+        model_gru, "GRU", train_data, is_train=True, lr=1, gradcheck=True
+    )
+    _, _, hiddens_rnn = run_epoch(
+        model_rnn, "RNN", train_data, is_train=True, lr=1, gradcheck=True
+    )
 
     norm_grads_gru = calculate_gradient_norm(hiddens_gru)
     norm_grads_rnn = calculate_gradient_norm(hiddens_rnn)
 
+    plt.style.use("ggplot")
     plt.figure()
     plt.plot(loss_t_tensor_gru.cpu().numpy(), label="GRU", marker="s")
     plt.plot(loss_t_tensor_rnn.cpu().numpy(), label="RNN", marker="s")
+    plt.plot(loss_t_tensor_trans.cpu().numpy(), label="TRANSFORMER", marker="s")
     plt.legend()
     plt.xlabel("Timestep")
     plt.ylabel("Mean Loss")
@@ -256,3 +286,4 @@ if __name__ == "__main__":
     plt.xlabel("Timestep")
     plt.ylabel("Normalized gradient")
     plt.savefig("Gradient.png")
+    plt.show()

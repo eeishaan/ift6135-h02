@@ -372,14 +372,10 @@ def run_epoch(model, data, is_train=False, lr=1.0):
         hidden = hidden.to(device)
     costs = 0.0
     iters = 0
-    batch_iter = 0
     losses = []
-    loss_t_tensor = torch.zeros(model.seq_len).cuda()
+
     # LOOP THROUGH MINIBATCHES
     for step, (x, y) in enumerate(ptb_iterator(data, model.batch_size, model.seq_len)):
-        hidden = model.init_hidden()
-        hidden = hidden.to(device)
-        batch_iter += 1
         if args.model == 'TRANSFORMER':
             batch = Batch(torch.from_numpy(x).long().to(device))
             model.zero_grad()
@@ -389,7 +385,7 @@ def run_epoch(model, data, is_train=False, lr=1.0):
             inputs = torch.from_numpy(x.astype(np.int64)).transpose(0, 1).contiguous().to(device)#.cuda()
             model.zero_grad()
             hidden = repackage_hidden(hidden)
-            outputs, hidden, hiddens = model(inputs, hidden)
+            outputs, hidden = model(inputs, hidden)
 
         targets = torch.from_numpy(y.astype(np.int64)).transpose(0, 1).contiguous().to(device)#.cuda()
         tt = torch.squeeze(targets.view(-1, model.batch_size * model.seq_len))
@@ -400,10 +396,6 @@ def run_epoch(model, data, is_train=False, lr=1.0):
         # For problem 5.3, you will (instead) need to compute the average loss 
         #at each time-step separately. 
         loss = loss_fn(outputs.contiguous().view(-1, model.vocab_size), tt)
-        loss_t = []
-        for i in range(targets.shape[0]):
-            loss_t.append(loss_fn(outputs[i, :, :], targets[i, :]))
-        loss_t_tensor += torch.stack(loss_t).detach()
         costs += loss.data.item() * model.seq_len
         losses.append(costs)
         iters += model.seq_len
@@ -422,8 +414,7 @@ def run_epoch(model, data, is_train=False, lr=1.0):
                 print('step: '+ str(step) + '\t' \
                     + 'loss: '+ str(costs) + '\t' \
                     + 'speed (wps):' + str(iters * model.batch_size / (time.time() - start_time)))
-    loss_t_tensor = loss_t_tensor / batch_iter
-    return np.exp(costs / iters), losses
+return np.exp(costs / iters), losses
 
 
 
