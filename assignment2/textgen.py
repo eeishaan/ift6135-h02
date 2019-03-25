@@ -7,7 +7,7 @@ import torch
 import torch.nn as nn
 import time
 from torch.autograd import Variable
-from models import GRU, RNN
+from models_2 import GRU, RNN
 import matplotlib.pyplot as plt
 
 np = numpy
