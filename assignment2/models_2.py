@@ -230,7 +230,7 @@ class RNN(nn.Module):
             for p in range(generated_seq_len):
                 output, hidden, hiddens = self(input.cuda(), hidden.cuda())
                 hidden = torch.stack(hidden)
-                output_dist = output[0].div(0.8).exp()
+                output_dist = output[0].div(0.9).exp()
                 retained = torch.multinomial(output_dist, 1)
                 input = torch.t(retained)
                 samples.append(retained)
