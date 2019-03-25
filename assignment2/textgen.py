@@ -247,6 +247,7 @@ if __name__ == "__main__":
     plt.legend()
     plt.xlabel("Timestep")
     plt.ylabel("Mean Loss")
+    plt.savefig("MeanLoss.png")
 
     plt.figure()
     plt.plot(norm_grads_gru, label="GRU", marker="s")
@@ -254,4 +255,4 @@ if __name__ == "__main__":
     plt.legend()
     plt.xlabel("Timestep")
     plt.ylabel("Normalized gradient")
-    plt.show()
+    plt.savefig("Gradient.png")
