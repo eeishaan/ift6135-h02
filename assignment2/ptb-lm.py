@@ -88,6 +88,7 @@ import torch.nn
 from torch.autograd import Variable
 import torch.nn as nn
 import numpy
+import matplotlib.pyplot as plt
 np = numpy
 
 # NOTE ==============================================
@@ -135,7 +136,7 @@ parser.add_argument('--dp_keep_prob', type=float, default=0.35,
 
 # Arguments that you may want to make use of / implement more code for
 parser.add_argument('--debug', action='store_true') 
-parser.add_argument('--save_dir', type=str, default='',
+parser.add_argument('--save_dir', type=str, default='./results/',
                     help='path to save the experimental config, logs, model \
                     This is automatically generated based on the command line \
                     arguments you pass and only needs to be set if you want a \
@@ -414,7 +415,7 @@ def run_epoch(model, data, is_train=False, lr=1.0):
                 print('step: '+ str(step) + '\t' \
                     + 'loss: '+ str(costs) + '\t' \
                     + 'speed (wps):' + str(iters * model.batch_size / (time.time() - start_time)))
-return np.exp(costs / iters), losses
+    return np.exp(costs / iters), losses
 
 
 
@@ -431,6 +432,7 @@ val_ppls = []
 val_losses = []
 best_val_so_far = np.inf
 times = []
+clock = [0.]
 
 # In debug mode, only run one epoch
 if args.debug:
@@ -474,6 +476,7 @@ for epoch in range(num_epochs):
     train_losses.extend(train_loss)
     val_losses.extend(val_loss)
     times.append(time.time() - t0)
+    clock.append((time.time() - t0) + clock[-1])
     log_str = 'epoch: ' + str(epoch) + '\t' \
             + 'train ppl: ' + str(train_ppl) + '\t' \
             + 'val ppl: ' + str(val_ppl)  + '\t' \
@@ -489,8 +492,34 @@ print('\nDONE\n\nSaving learning curves to '+lc_path)
 np.save(lc_path, {'train_ppls':train_ppls, 
                   'val_ppls':val_ppls, 
                   'train_losses':train_losses,
-                  'val_losses':val_losses})
-# NOTE ==============================================
-# To load these, run 
-# >>> x = np.load(lc_path)[()]
-# You will need these values for plotting learning curves (Problem 4)
+                  'val_losses':val_losses,
+                  'clock':clock})
+
+plt.style.use('ggplot')     
+plt.rc('xtick', labelsize=15)
+plt.rc('ytick', labelsize=15)
+plt.rc('axes', labelsize=15)
+
+plt.figure(figsize=(17, 6))
+plt.subplot(121)
+plt.title(args.model)
+plt.plot(train_ppls[1:], label="Train")
+plt.plot(val_ppls[1:], label="Valid")
+plt.xlabel("Epochs")
+plt.ylabel("PPL")
+plt.legend()
+
+plt.subplot(122)
+plt.title(args.model)
+plt.plot(clock[2:], train_ppls[1:], label="Train")
+plt.plot(clock[2:], val_ppls[1:], label="Valid")
+plt.xlabel("Times")
+plt.ylabel("PPL")
+plt.legend()
+
+SAVE_PATH = "./images/"
+images_path = os.path.join(SAVE_PATH + '_'.join([argsdict['model'],
+                                         argsdict['optimizer']] 
+                                         + flags))
+
+plt.savefig("{}.png".format(images_path))
