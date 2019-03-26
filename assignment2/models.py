@@ -221,11 +221,11 @@ class RNN(nn.Module):
         self.eval()
         with torch.no_grad():
             hidden = self.init_hidden()
-            out, hidden= self(input.cuda(), hidden.cuda())
+            out, hidden = self(input.cuda(), hidden.cuda())
             hidden = torch.stack(hidden)
             # inp = out[-1].reshape(1).cuda()
             for p in range(generated_seq_len):
-                output, hidden= self(input.cuda(), hidden.cuda())
+                output, hidden = self(input.cuda(), hidden.cuda())
                 hidden = torch.stack(hidden)
                 output_dist = output[0].div(0.8).exp()
                 retained = torch.multinomial(output_dist, 1)
