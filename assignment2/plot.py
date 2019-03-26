@@ -6,15 +6,15 @@ import numpy as np
 
 def get_time(args):
     log_file = "./results/" + args.load_path + "/log.txt"
-    file = open(args.load_path, "r")
+    file = open(log_file, "r")
     log = file.readlines()
 
     clock = [0.]
 
     for logs in log:
-        time = parse('epoch: {} train ppl:  {} val ppl:  {} best val:  {} time (s) spent in epoch:  {}', logs)[4]
-        print(time)
-        clock.append(int(time) + clock[-1])
+        logs = logs.replace("\t", " ")
+        time = parse('epoch: {} train ppl: {} val ppl: {} best val: {} time (s) spent in epoch: {}', logs)[4]
+        clock.append(float(time) + clock[-1])
     
     return clock
 
@@ -24,7 +24,7 @@ def save_lc_plot(args):
     learning_curves = np.load(LOAD_PATH)[()]
     train_ppls = learning_curves["train_ppls"]
     valid_ppls = learning_curves["val_ppls"]
-    clock = get_time(args.load_path)
+    clock = get_time(args)
 
     if args.load_path[0] == "G":
         title = "GRU"
@@ -41,14 +41,14 @@ def save_lc_plot(args):
     plt.figure(figsize=(18, 6))
     plt.subplot(121)
     plt.plot(train_ppls[1:], label="Train")
-    plt.plot(val_ppls[1:], label="Valid")
+    plt.plot(valid_ppls[1:], label="Valid")
     plt.xlabel("Epochs")
     plt.ylabel("PPL")
     plt.legend()
 
     plt.subplot(122)
-    plt.plot(clock[1:], train_ppls[1:], label="Train")
-    plt.plot(clock[1:], val_ppls[1:], label="Valid")
+    plt.plot(clock[2:], train_ppls[1:], label="Train")
+    plt.plot(clock[2:], valid_ppls[1:], label="Valid")
     plt.xlabel("Times")
     plt.ylabel("PPL")
     plt.legend()
