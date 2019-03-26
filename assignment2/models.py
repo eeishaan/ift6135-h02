@@ -331,6 +331,7 @@ class GRU(nn.Module):  # Implement a stacked GRU RNN
 
     def forward(self, inputs, hidden):
         # TODO ========================
+        last_hidden = hidden
         inputs = self.embed_layer(inputs)
         output = []
         for timestep in range(self.seq_len):
