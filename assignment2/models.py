@@ -171,7 +171,6 @@ class RNN(nn.Module):
         last_hidden = hidden
         inputs = self.embed_layer(inputs)
         output = []
-        hiddens = []
         for timestep in range(self.seq_len):
             x = inputs[timestep]
             new_hidden_layer = []
@@ -183,12 +182,11 @@ class RNN(nn.Module):
                 x = node_out
                 new_hidden_layer.append(node_out)
             last_hidden = new_hidden_layer
-            hiddens.append(last_hidden)
             output.append(x)
         output = torch.stack(output)
         output = self.dropout(output)
         logits = self.output_layer(output)
-        return logits.view(self.seq_len, self.batch_size, self.vocab_size), last_hidden, hiddens
+        return logits.view(self.seq_len, self.batch_size, self.vocab_size), last_hidden
 
     def generate(self, input, hidden, generated_seq_len):
         # TODO ========================
@@ -219,16 +217,15 @@ class RNN(nn.Module):
         self.seq_len = 1
         samples = []
         input = input.unsqueeze(0)
-        samples.append(torch.t(input))
         self.batch_size = input.shape[1]
         self.eval()
         with torch.no_grad():
             hidden = self.init_hidden()
-            out, hidden, hiddens = self(input.cuda(), hidden.cuda())
+            out, hidden= self(input.cuda(), hidden.cuda())
             hidden = torch.stack(hidden)
             # inp = out[-1].reshape(1).cuda()
             for p in range(generated_seq_len):
-                output, hidden, hiddens = self(input.cuda(), hidden.cuda())
+                output, hidden= self(input.cuda(), hidden.cuda())
                 hidden = torch.stack(hidden)
                 output_dist = output[0].div(0.8).exp()
                 retained = torch.multinomial(output_dist, 1)
@@ -334,10 +331,8 @@ class GRU(nn.Module):  # Implement a stacked GRU RNN
 
     def forward(self, inputs, hidden):
         # TODO ========================
-        last_hidden = hidden       
         inputs = self.embed_layer(inputs)
         output = []
-        hiddens = []
         for timestep in range(self.seq_len):
             x = inputs[timestep]
             new_hidden_layer = []
@@ -354,13 +349,12 @@ class GRU(nn.Module):  # Implement a stacked GRU RNN
                 x = h_t
                 new_hidden_layer.append(h_t)
             last_hidden = new_hidden_layer
-            hiddens.append(last_hidden)
             output.append(x)
         output = torch.stack(output)
         output = self.dropout(output)
         logits = self.output_layer(output)
 
-        return logits.view(self.seq_len, self.batch_size, self.vocab_size), last_hidden, hiddens
+        return logits.view(self.seq_len, self.batch_size, self.vocab_size), last_hidden
 
     def generate(self, input, hidden, generated_seq_len):
         # TODO ========================
@@ -369,16 +363,15 @@ class GRU(nn.Module):  # Implement a stacked GRU RNN
         self.seq_len = 1
         samples = []
         input = input.unsqueeze(0)
-        samples.append(torch.t(input))
         self.batch_size = input.shape[1]
         self.eval()
         with torch.no_grad():
             hidden = self.init_hidden()
-            out, hidden, hiddens = self(input.cuda(), hidden.cuda())
+            out, hidden = self(input.cuda(), hidden.cuda())
             hidden = torch.stack(hidden)
             # inp = out[-1].reshape(1).cuda()
             for p in range(generated_seq_len):
-                output, hidden, hiddens = self(input.cuda(), hidden.cuda())
+                output, hidden = self(input.cuda(), hidden.cuda())
                 hidden = torch.stack(hidden)
                 output_dist = output[0].div(0.8).exp()
                 retained = torch.multinomial(output_dist, 1)
